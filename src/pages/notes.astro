@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+
+const notes = [
+	{ date: '2026.04.28', tag: 'design', title: '[占位] 一篇关于设计原则的笔记' },
+	{ date: '2026.04', tag: 'ai', title: '[占位] 关于 AI 在游戏开发中应用的思考' },
+];
+---
+
+<Base title="纸城 — Notes" current="Notes" pageNum="03">
+	<header style="margin-bottom: var(--space-8)">
+		<div class="eyebrow">03 ─ Notes</div>
+		<h1 class="display" style="margin-top: var(--space-4)">Notes</h1>
+		<p class="lead" style="margin-top: var(--space-5); max-width: 600px">
+			关于设计、AI 与游戏行业的零碎思考。
+		</p>
+	</header>
+
+	<ul class="notes">
+		{notes.map((n) => (
+			<li class="note">
+				<div class="note__meta">
+					<span class="note__date">{n.date}</span>
+					<span class="note__tag">{n.tag}</span>
+				</div>
+				<h3 class="note__title">{n.title}</h3>
+			</li>
+		))}
+	</ul>
+</Base>
+
+<style>
+	.notes { list-style: none; }
+	.note {
+		padding: var(--space-5) 0;
+		border-bottom: 1px solid var(--line);
+		display: grid;
+		grid-template-columns: 180px 1fr;
+		gap: var(--space-5);
+		align-items: baseline;
+	}
+	.note__meta {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+	}
+	.note__date {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.12em;
+		color: var(--gold);
+	}
+	.note__tag {
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.18em;
+		color: var(--ink-muted);
+		text-transform: uppercase;
+	}
+	.note__title {
+		font-size: 20px;
+		font-weight: 500;
+		color: var(--ink-primary);
+		transition: color var(--duration) var(--ease);
+	}
+	.note:hover .note__title { color: var(--gold); }
+
+	@media (max-width: 700px) {
+		.note { grid-template-columns: 1fr; gap: var(--space-2); }
+	}
+</style>

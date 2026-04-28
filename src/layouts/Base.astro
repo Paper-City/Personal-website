@@ -1,0 +1,35 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+interface Props {
+	title?: string;
+	description?: string;
+	current?: string;
+	pageNum?: string;
+}
+
+const {
+	title = SITE_TITLE,
+	description = SITE_DESCRIPTION,
+	current = '',
+	pageNum = '',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+	<head>
+		<BaseHead title={title} description={description} />
+	</head>
+	<body>
+		<div class="shell">
+			<Sidebar current={current} />
+			<main class="content">
+				<slot />
+			</main>
+		</div>
+		{pageNum && <div class="page-corner">{pageNum} / 04</div>}
+	</body>
+</html>

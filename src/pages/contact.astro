@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import { SOCIAL } from '../consts';
+---
+
+<Base title="纸城 — Contact" current="Contact" pageNum="04">
+	<header style="margin-bottom: var(--space-8)">
+		<div class="eyebrow">04 ─ Contact</div>
+		<h1 class="display" style="margin-top: var(--space-4)">Let's talk.</h1>
+		<p class="lead" style="margin-top: var(--space-5); max-width: 600px">
+			如果你想聊游戏设计、招聘机会、合作 — 都欢迎。
+		</p>
+	</header>
+
+	<div class="contact">
+		<a href={SOCIAL.email} class="contact__email">
+			IceCubeukv@bsdmail.com
+		</a>
+
+		<div class="contact__links">
+			<a href={SOCIAL.github} target="_blank" rel="noopener">
+				<span class="contact__label">GitHub</span>
+				<span class="contact__handle">@Paper-City</span>
+			</a>
+		</div>
+
+		<div class="contact__resume">
+			<div class="eyebrow">Resume</div>
+			<p style="margin-top: var(--space-3); color: var(--ink-muted); font-style: italic">
+				[占位 — 简历 PDF 准备好后放在这里]
+			</p>
+		</div>
+	</div>
+</Base>
+
+<style>
+	.contact { margin-top: var(--space-8); }
+	.contact__email {
+		display: inline-block;
+		font-family: var(--font-display);
+		font-size: clamp(28px, 5vw, 44px);
+		letter-spacing: 0.02em;
+		color: var(--gold);
+		border-bottom: 1px solid var(--gold-deep);
+		padding-bottom: var(--space-2);
+		transition: all var(--duration) var(--ease);
+	}
+	.contact__email:hover {
+		color: var(--ink-primary);
+		border-color: var(--gold);
+	}
+	.contact__links {
+		margin-top: var(--space-7);
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+	.contact__links a {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		padding: var(--space-4) 0;
+		border-bottom: 1px solid var(--line);
+		max-width: 400px;
+	}
+	.contact__label {
+		font-family: var(--font-display);
+		font-size: 18px;
+		letter-spacing: 0.04em;
+	}
+	.contact__handle {
+		font-family: var(--font-mono);
+		font-size: 13px;
+		color: var(--ink-muted);
+	}
+	.contact__resume { margin-top: var(--space-9); }
+</style>

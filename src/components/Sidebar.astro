@@ -1,0 +1,41 @@
+---
+import { NAV_ITEMS, SOCIAL } from '../consts';
+
+interface Props {
+	current?: string;
+}
+const { current = '' } = Astro.props;
+---
+
+<aside class="sidebar">
+	<div class="sidebar__avatar">
+		<img src="/avatar.png" alt="纸城" />
+	</div>
+
+	<div>
+		<div class="sidebar__name">纸城</div>
+		<div class="sidebar__tagline">
+			游戏既是一门科学，<br />又是一门艺术。
+		</div>
+	</div>
+
+	<nav class="nav" aria-label="Primary">
+		{NAV_ITEMS.map((item) => (
+			<a
+				href={item.href}
+				class={`nav__item ${item.label === current ? 'nav__item--active' : ''}`}
+			>
+				<span class="nav__num">{item.num}</span>
+				<span>{item.label}</span>
+			</a>
+		))}
+	</nav>
+
+	<div class="sidebar__footer">
+		<div class="sidebar__social">
+			<a href={SOCIAL.github} target="_blank" rel="noopener">GitHub</a>
+			<a href={SOCIAL.email}>Email</a>
+		</div>
+		<div>© 2026 · Paper City</div>
+	</div>
+</aside>

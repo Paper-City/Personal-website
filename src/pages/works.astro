@@ -1,0 +1,115 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Placeholder works — replace with real content from Wiki later
+const projects = [
+	{
+		num: 'P01',
+		title: 'Slow & Fast',
+		subtitle: '卡牌圈地桌游',
+		year: '2024',
+		context: 'UAL · 独立完成',
+		blurb: '3×4 网格上用牌画线圈地的多人对抗桌游。围绕"随机性如何影响竞争性与策略性"展开的设计探索。',
+	},
+	{
+		num: 'P03',
+		title: 'Ash of Aetharn',
+		subtitle: '肉鸽 · 即时战略 · 卡牌',
+		year: '进行中',
+		context: '独立开发',
+		blurb: '探索"探索系统作为肉鸽创新维度"的可能性——天气系统、RTS 式自由地图、刻印诅咒事件。',
+	},
+];
+---
+
+<Base title="纸城 — Works" current="Works" pageNum="02">
+	<header style="margin-bottom: var(--space-8)">
+		<div class="eyebrow">02 ─ Works</div>
+		<h1 class="display" style="margin-top: var(--space-4)">Works</h1>
+		<p class="lead" style="margin-top: var(--space-5); max-width: 600px">
+			我做过的游戏项目与对他人作品的设计分析。
+		</p>
+	</header>
+
+	<section>
+		<div class="section__head">
+			<span class="section-number">01</span>
+			<h2>Projects</h2>
+		</div>
+		<div class="works-grid">
+			{projects.map((p) => (
+				<article class="work-card">
+					<div class="work-card__head">
+						<span class="work-card__num">{p.num}</span>
+						<span class="work-card__year">{p.year}</span>
+					</div>
+					<h3 class="work-card__title">{p.title}</h3>
+					<div class="work-card__sub">{p.subtitle}</div>
+					<div class="work-card__ctx">{p.context}</div>
+					<p class="work-card__blurb">{p.blurb}</p>
+				</article>
+			))}
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="section__head">
+			<span class="section-number">02</span>
+			<h2>Game Analysis</h2>
+		</div>
+		<p style="color: var(--ink-muted); font-style: italic">
+			[占位 — 等你做完第一篇游戏分析后填充]
+		</p>
+	</section>
+</Base>
+
+<style>
+	.works-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: var(--space-5);
+	}
+	.work-card {
+		padding: var(--space-6);
+		background: var(--bg-panel);
+		border: 1px solid var(--line);
+		transition: all var(--duration) var(--ease);
+		position: relative;
+	}
+	.work-card:hover {
+		border-color: var(--gold);
+		transform: translateY(-2px);
+	}
+	.work-card__head {
+		display: flex;
+		justify-content: space-between;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.15em;
+		color: var(--gold);
+		margin-bottom: var(--space-4);
+	}
+	.work-card__title {
+		font-size: 28px;
+		letter-spacing: 0.04em;
+	}
+	.work-card__sub {
+		margin-top: var(--space-2);
+		font-style: italic;
+		color: var(--ink-secondary);
+	}
+	.work-card__ctx {
+		margin-top: var(--space-3);
+		font-family: var(--font-mono);
+		font-size: 11px;
+		letter-spacing: 0.1em;
+		color: var(--ink-muted);
+		text-transform: uppercase;
+	}
+	.work-card__blurb {
+		margin-top: var(--space-4);
+		padding-top: var(--space-4);
+		border-top: 1px solid var(--line);
+		color: var(--ink-secondary);
+	}
+</style>
