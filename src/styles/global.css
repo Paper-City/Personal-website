@@ -309,10 +309,10 @@ p + p { margin-top: var(--s-4); }
 /* ---------- Photo tile collage ---------- */
 .tile-collage {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 55%;
-  height: 100%;
+  top: -4%;
+  right: -3%;
+  width: 64%;
+  height: 110%;
   pointer-events: none;
   z-index: 0;
 }
@@ -320,7 +320,7 @@ p + p { margin-top: var(--s-4); }
   position: absolute;
   background: var(--surface);
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.65);
   transition: transform var(--duration-slow) var(--ease-out);
 }
 .tile img { width: 100%; height: 100%; object-fit: cover; }
@@ -328,65 +328,57 @@ p + p { margin-top: var(--s-4); }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4));
+  background: linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.45));
   pointer-events: none;
 }
 
-/* Hero portrait (largest, most prominent) */
-.tile--portrait {
-  top: 6%;
-  right: 28%;
-  width: 26%;
-  aspect-ratio: 3/4;
-  transform: rotate(-3deg);
+/* Foreground hero — the largest "working artifact" */
+.tile--prototype {
+  top: 10%;
+  right: 18%;
+  width: 36%;
+  aspect-ratio: 4/3;
+  transform: rotate(3deg);
   z-index: 5;
 }
 
-/* Mid-layer: working artifacts */
-.tile--prototype {
-  top: 30%;
-  right: 4%;
-  width: 24%;
-  aspect-ratio: 4/3;
-  transform: rotate(6deg);
-  z-index: 4;
-}
+/* Mid-layer */
 .tile--presentation {
-  top: 56%;
-  right: 32%;
-  width: 22%;
+  top: 52%;
+  right: 28%;
+  width: 30%;
   aspect-ratio: 4/3;
   transform: rotate(-5deg);
-  z-index: 3;
+  z-index: 4;
 }
 
 /* Background layer: contextual */
 .tile--workshop {
-  top: 2%;
-  right: 6%;
-  width: 18%;
+  top: 0;
+  right: 2%;
+  width: 22%;
   aspect-ratio: 3/4;
-  transform: rotate(4deg);
-  z-index: 2;
-  opacity: 0.85;
+  transform: rotate(5deg);
+  z-index: 3;
+  opacity: 0.9;
 }
 .tile--exhibition {
-  top: 70%;
-  right: 6%;
-  width: 16%;
+  top: 62%;
+  right: 0%;
+  width: 26%;
   aspect-ratio: 4/3;
-  transform: rotate(-8deg);
-  z-index: 1;
-  opacity: 0.75;
+  transform: rotate(-7deg);
+  z-index: 2;
+  opacity: 0.78;
 }
 
 /* Solid blue accent tile — pure graphic, anchors the composition */
 .tile--accent {
-  top: 45%;
-  right: 50%;
-  width: 12%;
+  top: 38%;
+  right: 56%;
+  width: 14%;
   aspect-ratio: 1/1;
-  transform: rotate(12deg);
+  transform: rotate(14deg);
   z-index: 6;
   background: var(--accent);
   box-shadow: 0 25px 80px var(--accent-glow);
@@ -399,7 +391,7 @@ p + p { margin-top: var(--s-4); }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 48px;
+  font-size: 56px;
   color: rgba(255,255,255,0.25);
   font-family: var(--font-mono);
 }
