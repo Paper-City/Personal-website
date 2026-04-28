@@ -206,29 +206,46 @@ p + p { margin-top: var(--s-4); }
   filter: contrast(1.05);
 }
 
-.sidebar__name-block { margin-top: var(--s-4); }
+.sidebar__name-block {
+  margin-top: var(--s-2);
+  display: block;
+  position: relative;
+  padding-top: var(--s-5);
+}
+.sidebar__name-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: var(--accent);
+  transition: width var(--duration) var(--ease);
+}
+.sidebar__name-block:hover::before { width: 60px; }
+
 .sidebar__name {
   font-family: var(--font-display);
-  font-size: 36px;
+  font-size: 56px;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  line-height: 1;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
   color: var(--ink);
 }
 .sidebar__name-en {
   display: block;
-  margin-top: var(--s-2);
+  margin-top: var(--s-3);
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   color: var(--accent-bright);
   text-transform: uppercase;
 }
 .sidebar__tagline {
-  margin-top: var(--s-4);
+  margin-top: var(--s-5);
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.5;
   color: var(--ink-muted);
 }
@@ -332,11 +349,21 @@ p + p { margin-top: var(--s-4); }
   pointer-events: none;
 }
 
+/* Personal portrait — small but foreground, "this is me" anchor closest to text */
+.tile--portrait {
+  top: 18%;
+  right: 50%;
+  width: 20%;
+  aspect-ratio: 3/4;
+  transform: rotate(-4deg);
+  z-index: 6;
+}
+
 /* Foreground hero — the largest "working artifact" */
 .tile--prototype {
-  top: 10%;
-  right: 18%;
-  width: 36%;
+  top: 6%;
+  right: 14%;
+  width: 32%;
   aspect-ratio: 4/3;
   transform: rotate(3deg);
   z-index: 5;
@@ -344,9 +371,9 @@ p + p { margin-top: var(--s-4); }
 
 /* Mid-layer */
 .tile--presentation {
-  top: 52%;
-  right: 28%;
-  width: 30%;
+  top: 56%;
+  right: 24%;
+  width: 28%;
   aspect-ratio: 4/3;
   transform: rotate(-5deg);
   z-index: 4;
@@ -355,31 +382,31 @@ p + p { margin-top: var(--s-4); }
 /* Background layer: contextual */
 .tile--workshop {
   top: 0;
-  right: 2%;
-  width: 22%;
+  right: 0;
+  width: 18%;
   aspect-ratio: 3/4;
   transform: rotate(5deg);
   z-index: 3;
-  opacity: 0.9;
+  opacity: 0.88;
 }
 .tile--exhibition {
-  top: 62%;
+  top: 65%;
   right: 0%;
-  width: 26%;
+  width: 24%;
   aspect-ratio: 4/3;
   transform: rotate(-7deg);
   z-index: 2;
   opacity: 0.78;
 }
 
-/* Solid blue accent tile — pure graphic, anchors the composition */
+/* Solid blue accent tile — pure graphic anchor, bridges text and photos */
 .tile--accent {
-  top: 38%;
-  right: 56%;
-  width: 14%;
+  top: 48%;
+  right: 60%;
+  width: 12%;
   aspect-ratio: 1/1;
   transform: rotate(14deg);
-  z-index: 6;
+  z-index: 7;
   background: var(--accent);
   box-shadow: 0 25px 80px var(--accent-glow);
 }

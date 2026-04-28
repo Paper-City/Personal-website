@@ -8,18 +8,14 @@ const { current = '' } = Astro.props;
 ---
 
 <aside class="sidebar">
-	<a href="/" class="sidebar__avatar-wrap" aria-label="Home">
-		<img src="/avatar.png" alt="纸城" class="sidebar__avatar" />
-	</a>
-
-	<div class="sidebar__name-block fade-up fade-up--1">
+	<a href="/" class="sidebar__name-block fade-up fade-up--1" aria-label="Home">
 		<div class="sidebar__name">纸城</div>
 		<span class="sidebar__name-en">Paper City</span>
 		<div class="sidebar__tagline">
 			Game Systems Designer<br />
 			between science & art.
 		</div>
-	</div>
+	</a>
 
 	<nav class="nav fade-up fade-up--2" aria-label="Primary">
 		{NAV_ITEMS.map((item) => (
