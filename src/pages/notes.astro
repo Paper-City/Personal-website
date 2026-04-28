@@ -2,70 +2,126 @@
 import Base from '../layouts/Base.astro';
 
 const notes = [
-	{ date: '2026.04.28', tag: 'design', title: '[占位] 一篇关于设计原则的笔记' },
-	{ date: '2026.04', tag: 'ai', title: '[占位] 关于 AI 在游戏开发中应用的思考' },
+	{ date: '2026.04.28', tag: 'design', title: '[占位] 一篇关于设计原则的笔记', length: '4 min' },
+	{ date: '2026.04', tag: 'ai', title: '[占位] 关于 AI 在游戏开发中应用的思考', length: '6 min' },
 ];
 ---
 
 <Base title="纸城 — Notes" current="Notes" pageNum="03">
-	<header style="margin-bottom: var(--space-8)">
-		<div class="eyebrow">03 ─ Notes</div>
-		<h1 class="display" style="margin-top: var(--space-4)">Notes</h1>
-		<p class="lead" style="margin-top: var(--space-5); max-width: 600px">
-			关于设计、AI 与游戏行业的零碎思考。
-		</p>
-	</header>
+	<section class="hero hero--small">
+		<div class="bg-diagonal bg-diagonal--small"></div>
+		<div class="hero__inner">
+			<div class="eyebrow fade-up fade-up--1">03 ─ NOTES</div>
+			<h1 class="display-lg fade-up fade-up--2">Notes</h1>
+			<p class="lead fade-up fade-up--3" style="margin-top: var(--s-5); max-width: 540px">
+				关于设计、AI 与游戏行业的<br />零碎思考。
+			</p>
+		</div>
+	</section>
 
-	<ul class="notes">
-		{notes.map((n) => (
-			<li class="note">
-				<div class="note__meta">
-					<span class="note__date">{n.date}</span>
-					<span class="note__tag">{n.tag}</span>
-				</div>
-				<h3 class="note__title">{n.title}</h3>
-			</li>
-		))}
-	</ul>
+	<section class="section">
+		<ul class="notes">
+			{notes.map((n, i) => (
+				<li class="note" style={`--i: ${i}`}>
+					<div class="note__num">.{String(i + 1).padStart(2, '0')}</div>
+					<div class="note__meta">
+						<span class="note__date">{n.date}</span>
+						<span class="note__tag">{n.tag}</span>
+					</div>
+					<h3 class="note__title">{n.title}</h3>
+					<div class="note__length">{n.length}</div>
+					<div class="note__arrow">→</div>
+				</li>
+			))}
+		</ul>
+	</section>
 </Base>
 
 <style>
+	.hero--small { min-height: 40vh; padding-bottom: var(--s-7); }
+
 	.notes { list-style: none; }
 	.note {
-		padding: var(--space-5) 0;
-		border-bottom: 1px solid var(--line);
+		position: relative;
 		display: grid;
-		grid-template-columns: 180px 1fr;
-		gap: var(--space-5);
+		grid-template-columns: 60px 140px 1fr 80px 30px;
+		gap: var(--s-5);
+		padding: var(--s-5) var(--s-4);
+		border-bottom: 1px solid var(--line);
 		align-items: baseline;
+		transition: all var(--duration) var(--ease);
+		cursor: pointer;
+	}
+	.note::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: var(--accent);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform var(--duration) var(--ease-out);
+		z-index: 0;
+	}
+	.note:hover::before { transform: scaleX(1); }
+	.note > * { position: relative; z-index: 1; transition: color var(--duration) var(--ease); }
+	.note:hover { padding-left: var(--s-6); }
+
+	.note__num {
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.15em;
+		color: var(--ink-faint);
 	}
 	.note__meta {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-2);
+		gap: var(--s-1);
 	}
 	.note__date {
 		font-family: var(--font-mono);
 		font-size: 12px;
 		letter-spacing: 0.12em;
-		color: var(--gold);
+		color: var(--accent-bright);
 	}
+	.note:hover .note__date { color: var(--ink); }
 	.note__tag {
 		font-family: var(--font-mono);
-		font-size: 10px;
-		letter-spacing: 0.18em;
+		font-size: 9px;
+		letter-spacing: 0.22em;
 		color: var(--ink-muted);
 		text-transform: uppercase;
 	}
 	.note__title {
-		font-size: 20px;
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: 22px;
 		font-weight: 500;
-		color: var(--ink-primary);
-		transition: color var(--duration) var(--ease);
+		color: var(--ink);
 	}
-	.note:hover .note__title { color: var(--gold); }
+	.note__length {
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.15em;
+		color: var(--ink-muted);
+		text-transform: uppercase;
+	}
+	.note__arrow {
+		font-size: 18px;
+		color: var(--ink-muted);
+		transition: transform var(--duration) var(--ease);
+	}
+	.note:hover .note__arrow {
+		color: var(--ink);
+		transform: translateX(4px);
+	}
+	.note:hover .note__num { color: rgba(255,255,255,0.6); }
+	.note:hover .note__tag { color: rgba(255,255,255,0.7); }
+	.note:hover .note__length { color: rgba(255,255,255,0.7); }
 
-	@media (max-width: 700px) {
-		.note { grid-template-columns: 1fr; gap: var(--space-2); }
+	@media (max-width: 800px) {
+		.note { grid-template-columns: 60px 1fr 30px; }
+		.note__meta { grid-row: 2; grid-column: 1 / -1; }
+		.note__title { grid-column: 2; }
+		.note__length { display: none; }
 	}
 </style>

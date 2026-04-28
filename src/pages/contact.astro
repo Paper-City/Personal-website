@@ -4,74 +4,149 @@ import { SOCIAL } from '../consts';
 ---
 
 <Base title="纸城 — Contact" current="Contact" pageNum="04">
-	<header style="margin-bottom: var(--space-8)">
-		<div class="eyebrow">04 ─ Contact</div>
-		<h1 class="display" style="margin-top: var(--space-4)">Let's talk.</h1>
-		<p class="lead" style="margin-top: var(--space-5); max-width: 600px">
-			如果你想聊游戏设计、招聘机会、合作 — 都欢迎。
-		</p>
-	</header>
+	<section class="hero hero--small">
+		<div class="bg-diagonal bg-diagonal--small"></div>
+		<div class="hero__inner">
+			<div class="eyebrow fade-up fade-up--1">04 ─ CONTACT</div>
+			<h1 class="display-lg fade-up fade-up--2">Let's<br /><em>talk.</em></h1>
+			<p class="lead fade-up fade-up--3" style="margin-top: var(--s-5); max-width: 540px">
+				游戏设计 / 招聘机会 / 合作 — 都欢迎。
+			</p>
+		</div>
+	</section>
 
-	<div class="contact">
-		<a href={SOCIAL.email} class="contact__email">
-			IceCubeukv@bsdmail.com
-		</a>
-
-		<div class="contact__links">
-			<a href={SOCIAL.github} target="_blank" rel="noopener">
-				<span class="contact__label">GitHub</span>
-				<span class="contact__handle">@Paper-City</span>
+	<section class="section">
+		<div class="contact-card">
+			<div class="contact-card__label">EMAIL</div>
+			<a href={SOCIAL.email} class="contact-card__email">
+				IceCubeukv@bsdmail.com
+				<span class="contact-card__arrow">↗</span>
 			</a>
 		</div>
 
-		<div class="contact__resume">
-			<div class="eyebrow">Resume</div>
-			<p style="margin-top: var(--space-3); color: var(--ink-muted); font-style: italic">
-				[占位 — 简历 PDF 准备好后放在这里]
-			</p>
+		<div class="links-grid">
+			<a href={SOCIAL.github} target="_blank" rel="noopener" class="link-card">
+				<div class="link-card__num">.01</div>
+				<div class="eyebrow">Code</div>
+				<div class="link-card__name">GitHub</div>
+				<div class="link-card__handle">@Paper-City</div>
+				<div class="link-card__arrow">↗</div>
+			</a>
+
+			<div class="link-card link-card--placeholder">
+				<div class="link-card__num">.02</div>
+				<div class="eyebrow">Resume</div>
+				<div class="link-card__name">Download PDF</div>
+				<div class="link-card__handle">[占位]</div>
+			</div>
 		</div>
-	</div>
+	</section>
 </Base>
 
 <style>
-	.contact { margin-top: var(--space-8); }
-	.contact__email {
-		display: inline-block;
-		font-family: var(--font-display);
-		font-size: clamp(28px, 5vw, 44px);
-		letter-spacing: 0.02em;
-		color: var(--gold);
-		border-bottom: 1px solid var(--gold-deep);
-		padding-bottom: var(--space-2);
+	.hero--small { min-height: 40vh; padding-bottom: var(--s-7); }
+	.hero h1 em { color: var(--accent-bright); font-style: italic; }
+
+	.contact-card {
+		padding: var(--s-7) var(--s-7);
+		background: var(--bg-soft);
+		border: 1px solid var(--line);
+		margin-bottom: var(--s-6);
 		transition: all var(--duration) var(--ease);
 	}
-	.contact__email:hover {
-		color: var(--ink-primary);
-		border-color: var(--gold);
+	.contact-card:hover { border-color: var(--accent); }
+	.contact-card__label {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		letter-spacing: 0.22em;
+		color: var(--accent-bright);
+		margin-bottom: var(--s-4);
 	}
-	.contact__links {
-		margin-top: var(--space-7);
+	.contact-card__email {
+		display: flex;
+		align-items: baseline;
+		gap: var(--s-3);
+		font-family: var(--font-display);
+		font-size: clamp(28px, 5vw, 48px);
+		font-weight: 500;
+		font-style: italic;
+		color: var(--ink);
+		transition: color var(--duration) var(--ease);
+	}
+	.contact-card__email:hover { color: var(--accent-bright); }
+	.contact-card__arrow {
+		font-style: normal;
+		font-size: 0.7em;
+		opacity: 0.5;
+		transition: transform var(--duration) var(--ease);
+	}
+	.contact-card__email:hover .contact-card__arrow { transform: translate(4px, -4px); opacity: 1; }
+
+	.links-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--s-4);
+	}
+	.link-card {
+		position: relative;
+		padding: var(--s-6);
+		background: var(--bg-soft);
+		border: 1px solid var(--line);
+		transition: all var(--duration) var(--ease);
 		display: flex;
 		flex-direction: column;
-		gap: var(--space-4);
+		gap: var(--s-3);
+		min-height: 200px;
 	}
-	.contact__links a {
-		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-		padding: var(--space-4) 0;
-		border-bottom: 1px solid var(--line);
-		max-width: 400px;
+	a.link-card:hover {
+		border-color: var(--accent);
+		transform: translateY(-4px);
+		background: var(--accent);
 	}
-	.contact__label {
-		font-family: var(--font-display);
-		font-size: 18px;
-		letter-spacing: 0.04em;
-	}
-	.contact__handle {
+	a.link-card:hover .eyebrow { color: rgba(255,255,255,0.7); }
+	a.link-card:hover .link-card__num { color: rgba(255,255,255,0.5); }
+	.link-card__num {
+		position: absolute;
+		top: var(--s-4);
+		right: var(--s-5);
 		font-family: var(--font-mono);
-		font-size: 13px;
+		font-size: 12px;
+		letter-spacing: 0.2em;
+		color: var(--ink-faint);
+	}
+	.link-card__name {
+		font-family: var(--font-display);
+		font-size: 32px;
+		font-weight: 500;
+		font-style: italic;
+		margin-top: var(--s-3);
+	}
+	.link-card__handle {
+		margin-top: auto;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.15em;
 		color: var(--ink-muted);
 	}
-	.contact__resume { margin-top: var(--space-9); }
+	.link-card__arrow {
+		position: absolute;
+		bottom: var(--s-5);
+		right: var(--s-5);
+		font-size: 20px;
+		color: var(--ink-muted);
+		transition: transform var(--duration) var(--ease);
+	}
+	a.link-card:hover .link-card__arrow {
+		color: var(--ink);
+		transform: translate(4px, -4px);
+	}
+	.link-card--placeholder {
+		opacity: 0.55;
+		cursor: not-allowed;
+		border-style: dashed;
+	}
+
+	@media (max-width: 700px) {
+		.links-grid { grid-template-columns: 1fr; }
+	}
 </style>

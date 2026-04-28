@@ -8,18 +8,20 @@ const { current = '' } = Astro.props;
 ---
 
 <aside class="sidebar">
-	<div class="sidebar__avatar">
-		<img src="/avatar.png" alt="纸城" />
-	</div>
+	<a href="/" class="sidebar__avatar-wrap" aria-label="Home">
+		<img src="/avatar.png" alt="纸城" class="sidebar__avatar" />
+	</a>
 
-	<div>
+	<div class="sidebar__name-block fade-up fade-up--1">
 		<div class="sidebar__name">纸城</div>
+		<span class="sidebar__name-en">Paper City</span>
 		<div class="sidebar__tagline">
-			游戏既是一门科学，<br />又是一门艺术。
+			Game Systems Designer<br />
+			between science & art.
 		</div>
 	</div>
 
-	<nav class="nav" aria-label="Primary">
+	<nav class="nav fade-up fade-up--2" aria-label="Primary">
 		{NAV_ITEMS.map((item) => (
 			<a
 				href={item.href}
@@ -31,11 +33,11 @@ const { current = '' } = Astro.props;
 		))}
 	</nav>
 
-	<div class="sidebar__footer">
+	<div class="sidebar__footer fade-up fade-up--3">
 		<div class="sidebar__social">
 			<a href={SOCIAL.github} target="_blank" rel="noopener">GitHub</a>
 			<a href={SOCIAL.email}>Email</a>
 		</div>
-		<div>© 2026 · Paper City</div>
+		<div>© 2026 — Paper City</div>
 	</div>
 </aside>

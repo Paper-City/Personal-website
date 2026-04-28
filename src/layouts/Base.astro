@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Sidebar from '../components/Sidebar.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
 	title?: string;
@@ -22,6 +23,7 @@ const {
 <html lang="zh-CN">
 	<head>
 		<BaseHead title={title} description={description} />
+		<ClientRouter />
 	</head>
 	<body>
 		<div class="shell">
@@ -31,5 +33,25 @@ const {
 			</main>
 		</div>
 		{pageNum && <div class="page-corner">{pageNum} / 04</div>}
+
+		<script>
+			// Parallax tile collage — tiles drift slightly with mouse position
+			function attachParallax() {
+				const tiles = document.querySelectorAll<HTMLElement>('.tile');
+				if (!tiles.length) return;
+				const handler = (e: MouseEvent) => {
+					const x = (e.clientX / window.innerWidth - 0.5) * 2;
+					const y = (e.clientY / window.innerHeight - 0.5) * 2;
+					tiles.forEach((tile, i) => {
+						const intensity = (i + 1) * 6;
+						const baseRotate = parseFloat(tile.dataset.rotate || '0');
+						tile.style.transform = `translate(${x * intensity}px, ${y * intensity}px) rotate(${baseRotate}deg)`;
+					});
+				};
+				window.addEventListener('mousemove', handler);
+				return () => window.removeEventListener('mousemove', handler);
+			}
+			document.addEventListener('astro:page-load', attachParallax);
+		</script>
 	</body>
 </html>
