@@ -311,7 +311,7 @@ p + p { margin-top: var(--s-4); }
   position: absolute;
   top: 0;
   right: 0;
-  width: 50%;
+  width: 55%;
   height: 100%;
   pointer-events: none;
   z-index: 0;
@@ -320,36 +320,88 @@ p + p { margin-top: var(--s-4); }
   position: absolute;
   background: var(--surface);
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
   transition: transform var(--duration-slow) var(--ease-out);
 }
 .tile img { width: 100%; height: 100%; object-fit: cover; }
-.tile--1 {
-  top: 8%;
-  right: 35%;
-  width: 28%;
-  aspect-ratio: 3/4;
-  transform: rotate(-4deg);
-  z-index: 3;
+.tile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4));
+  pointer-events: none;
 }
-.tile--2 {
-  top: 25%;
-  right: 8%;
+
+/* Hero portrait (largest, most prominent) */
+.tile--portrait {
+  top: 6%;
+  right: 28%;
+  width: 26%;
+  aspect-ratio: 3/4;
+  transform: rotate(-3deg);
+  z-index: 5;
+}
+
+/* Mid-layer: working artifacts */
+.tile--prototype {
+  top: 30%;
+  right: 4%;
+  width: 24%;
+  aspect-ratio: 4/3;
+  transform: rotate(6deg);
+  z-index: 4;
+}
+.tile--presentation {
+  top: 56%;
+  right: 32%;
   width: 22%;
   aspect-ratio: 4/3;
-  transform: rotate(5deg);
-  z-index: 2;
-  background: var(--accent);
+  transform: rotate(-5deg);
+  z-index: 3;
 }
-.tile--3 {
-  top: 55%;
-  right: 25%;
+
+/* Background layer: contextual */
+.tile--workshop {
+  top: 2%;
+  right: 6%;
   width: 18%;
-  aspect-ratio: 1/1;
-  transform: rotate(-7deg);
+  aspect-ratio: 3/4;
+  transform: rotate(4deg);
+  z-index: 2;
+  opacity: 0.85;
+}
+.tile--exhibition {
+  top: 70%;
+  right: 6%;
+  width: 16%;
+  aspect-ratio: 4/3;
+  transform: rotate(-8deg);
   z-index: 1;
-  background: var(--bg-soft);
-  border: 1px solid var(--line);
+  opacity: 0.75;
+}
+
+/* Solid blue accent tile — pure graphic, anchors the composition */
+.tile--accent {
+  top: 45%;
+  right: 50%;
+  width: 12%;
+  aspect-ratio: 1/1;
+  transform: rotate(12deg);
+  z-index: 6;
+  background: var(--accent);
+  box-shadow: 0 25px 80px var(--accent-glow);
+}
+.tile--accent::after { display: none; }
+.tile--accent::before {
+  content: '◢';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  color: rgba(255,255,255,0.25);
+  font-family: var(--font-mono);
 }
 
 /* ---------- Section ---------- */

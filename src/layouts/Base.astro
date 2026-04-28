@@ -35,17 +35,20 @@ const {
 		{pageNum && <div class="page-corner">{pageNum} / 04</div>}
 
 		<script>
-			// Parallax tile collage — tiles drift slightly with mouse position
+			// Parallax tile collage — depth-based drift with mouse position.
+			// data-depth: 1 (foreground, subtle) / 2 (mid) / 3 (background, strong)
 			function attachParallax() {
 				const tiles = document.querySelectorAll<HTMLElement>('.tile');
 				if (!tiles.length) return;
 				const handler = (e: MouseEvent) => {
 					const x = (e.clientX / window.innerWidth - 0.5) * 2;
 					const y = (e.clientY / window.innerHeight - 0.5) * 2;
-					tiles.forEach((tile, i) => {
-						const intensity = (i + 1) * 6;
+					tiles.forEach((tile) => {
+						const depth = parseFloat(tile.dataset.depth || '2');
+						const intensity = depth * 7;
 						const baseRotate = parseFloat(tile.dataset.rotate || '0');
-						tile.style.transform = `translate(${x * intensity}px, ${y * intensity}px) rotate(${baseRotate}deg)`;
+						const sway = x * 0.6;
+						tile.style.transform = `translate(${x * intensity}px, ${y * intensity}px) rotate(${baseRotate + sway}deg)`;
 					});
 				};
 				window.addEventListener('mousemove', handler);

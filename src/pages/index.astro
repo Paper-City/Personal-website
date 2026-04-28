@@ -8,11 +8,22 @@ import Base from '../layouts/Base.astro';
 		<div class="bg-diagonal"></div>
 
 		<div class="tile-collage" aria-hidden="true">
-			<div class="tile tile--1" data-rotate="-4">
+			<div class="tile tile--workshop" data-rotate="4" data-depth="3">
+				<img src="/workshop.jpg" alt="" loading="lazy" />
+			</div>
+			<div class="tile tile--exhibition" data-rotate="-8" data-depth="3">
+				<img src="/exhibition.jpg" alt="" loading="lazy" />
+			</div>
+			<div class="tile tile--presentation" data-rotate="-5" data-depth="2">
+				<img src="/presentation.jpg" alt="" loading="lazy" />
+			</div>
+			<div class="tile tile--prototype" data-rotate="6" data-depth="2">
+				<img src="/prototype.jpg" alt="" loading="lazy" />
+			</div>
+			<div class="tile tile--portrait" data-rotate="-3" data-depth="1">
 				<img src="/avatar.png" alt="" />
 			</div>
-			<div class="tile tile--2" data-rotate="5"></div>
-			<div class="tile tile--3" data-rotate="-7"></div>
+			<div class="tile tile--accent" data-rotate="12" data-depth="1"></div>
 		</div>
 
 		<div class="hero__inner">
