@@ -1,9 +1,14 @@
 ---
-import Base from '../layouts/Base.astro';
+import Base from '../../layouts/Base.astro';
 
 const notes = [
-	{ date: '2026.04.28', tag: 'design', title: '[占位] 一篇关于设计原则的笔记', length: '4 min' },
-	{ date: '2026.04', tag: 'ai', title: '[占位] 关于 AI 在游戏开发中应用的思考', length: '6 min' },
+	{
+		date: '2025.10',
+		tag: 'philosophy',
+		title: '我的游戏设计世界观',
+		length: '~10 min',
+		href: '/notes/balance',
+	},
 ];
 ---
 
@@ -22,15 +27,17 @@ const notes = [
 	<section class="section">
 		<ul class="notes">
 			{notes.map((n, i) => (
-				<li class="note" style={`--i: ${i}`}>
-					<div class="note__num">.{String(i + 1).padStart(2, '0')}</div>
-					<div class="note__meta">
-						<span class="note__date">{n.date}</span>
-						<span class="note__tag">{n.tag}</span>
-					</div>
-					<h3 class="note__title">{n.title}</h3>
-					<div class="note__length">{n.length}</div>
-					<div class="note__arrow">→</div>
+				<li class="note">
+					<a href={n.href} class="note__link">
+						<div class="note__num">.{String(i + 1).padStart(2, '0')}</div>
+						<div class="note__meta">
+							<span class="note__date">{n.date}</span>
+							<span class="note__tag">{n.tag}</span>
+						</div>
+						<h3 class="note__title">{n.title}</h3>
+						<div class="note__length">{n.length}</div>
+						<div class="note__arrow">→</div>
+					</a>
 				</li>
 			))}
 		</ul>
@@ -43,16 +50,20 @@ const notes = [
 	.notes { list-style: none; }
 	.note {
 		position: relative;
+		border-bottom: 1px solid var(--line);
+	}
+	.note__link {
+		position: relative;
 		display: grid;
 		grid-template-columns: 60px 140px 1fr 80px 30px;
 		gap: var(--s-5);
 		padding: var(--s-5) var(--s-4);
-		border-bottom: 1px solid var(--line);
 		align-items: baseline;
 		transition: all var(--duration) var(--ease);
-		cursor: pointer;
+		color: inherit;
+		text-decoration: none;
 	}
-	.note::before {
+	.note__link::before {
 		content: '';
 		position: absolute;
 		inset: 0;
@@ -62,9 +73,9 @@ const notes = [
 		transition: transform var(--duration) var(--ease-out);
 		z-index: 0;
 	}
-	.note:hover::before { transform: scaleX(1); }
-	.note > * { position: relative; z-index: 1; transition: color var(--duration) var(--ease); }
-	.note:hover { padding-left: var(--s-6); }
+	.note__link:hover::before { transform: scaleX(1); }
+	.note__link > * { position: relative; z-index: 1; transition: color var(--duration) var(--ease); }
+	.note__link:hover { padding-left: var(--s-6); }
 
 	.note__num {
 		font-family: var(--font-mono);
@@ -83,7 +94,7 @@ const notes = [
 		letter-spacing: 0.12em;
 		color: var(--accent-bright);
 	}
-	.note:hover .note__date { color: var(--ink); }
+	.note__link:hover .note__date { color: var(--ink); }
 	.note__tag {
 		font-family: var(--font-mono);
 		font-size: 9px;
@@ -93,7 +104,6 @@ const notes = [
 	}
 	.note__title {
 		font-family: var(--font-display);
-		
 		font-size: 22px;
 		font-weight: 500;
 		color: var(--ink);
@@ -110,16 +120,16 @@ const notes = [
 		color: var(--ink-muted);
 		transition: transform var(--duration) var(--ease);
 	}
-	.note:hover .note__arrow {
+	.note__link:hover .note__arrow {
 		color: var(--ink);
 		transform: translateX(4px);
 	}
-	.note:hover .note__num { color: rgba(255,255,255,0.6); }
-	.note:hover .note__tag { color: rgba(255,255,255,0.7); }
-	.note:hover .note__length { color: rgba(255,255,255,0.7); }
+	.note__link:hover .note__num { color: rgba(255,255,255,0.6); }
+	.note__link:hover .note__tag { color: rgba(255,255,255,0.7); }
+	.note__link:hover .note__length { color: rgba(255,255,255,0.7); }
 
 	@media (max-width: 800px) {
-		.note { grid-template-columns: 60px 1fr 30px; }
+		.note__link { grid-template-columns: 60px 1fr 30px; }
 		.note__meta { grid-row: 2; grid-column: 1 / -1; }
 		.note__title { grid-column: 2; }
 		.note__length { display: none; }
