@@ -144,24 +144,24 @@ p + p { margin-top: var(--s-4); }
   overflow: hidden;
 }
 
-/* Diagonal blue accent — the signature shape */
+/* Diagonal blue accent — the signature shape (parallelogram-style) */
 .bg-diagonal {
   position: absolute;
-  top: 0;
-  right: -10%;
-  width: 65%;
-  height: 100%;
+  top: 4%;
+  right: -8%;
+  width: 60%;
+  height: 92%;
   background: var(--accent);
-  clip-path: polygon(35% 0, 100% 0, 100% 100%, 0% 100%);
+  clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
   opacity: 0.95;
   pointer-events: none;
   z-index: 0;
 }
 .bg-diagonal--small {
-  width: 30%;
-  right: -5%;
-  top: 10%;
-  height: 50%;
+  width: 32%;
+  right: -3%;
+  top: 8%;
+  height: 60%;
 }
 
 .content > * { position: relative; z-index: 1; }
@@ -349,56 +349,57 @@ p + p { margin-top: var(--s-4); }
   pointer-events: none;
 }
 
-/* Personal portrait — central focal point, slightly enlarged, foreground */
+/* Personal portrait — most prominent, central, foreground */
 .tile--portrait {
-  top: 16%;
-  right: 32%;
-  width: 26%;
+  top: 22%;
+  right: 24%;
+  width: 30%;
   aspect-ratio: 3/4;
-  transform: rotate(-3deg);
+  transform: rotate(-2deg);
   z-index: 10;
+  box-shadow: 0 35px 100px rgba(0,0,0,0.7);
 }
 
-/* Working artifact — overlaps portrait at upper-right */
-.tile--prototype {
-  top: 8%;
-  right: 14%;
-  width: 28%;
+/* Workshop — top-left of cluster, overlaps portrait corner */
+.tile--workshop {
+  top: 4%;
+  right: 36%;
+  width: 22%;
   aspect-ratio: 4/3;
-  transform: rotate(5deg);
+  transform: rotate(-6deg);
+  z-index: 6;
+  opacity: 0.95;
+}
+
+/* Prototype — top-right (overlaps top of portrait) */
+.tile--prototype {
+  top: 14%;
+  right: 4%;
+  width: 26%;
+  aspect-ratio: 4/3;
+  transform: rotate(4deg);
   z-index: 7;
 }
 
-/* Mid-layer — overlaps portrait at lower edge */
+/* Presentation — bottom-left (overlaps bottom of portrait) */
 .tile--presentation {
-  top: 52%;
+  top: 64%;
   right: 28%;
-  width: 26%;
+  width: 24%;
   aspect-ratio: 4/3;
-  transform: rotate(-6deg);
+  transform: rotate(-7deg);
   z-index: 8;
 }
 
-/* Context — peek from top, overlaps portrait upper-left */
-.tile--workshop {
-  top: 0;
-  right: 50%;
-  width: 17%;
-  aspect-ratio: 3/4;
-  transform: rotate(-9deg);
-  z-index: 6;
-  opacity: 0.88;
-}
-
-/* Context — overlaps presentation at right edge */
+/* Exhibition — bottom-right edge */
 .tile--exhibition {
-  top: 58%;
-  right: 4%;
-  width: 24%;
+  top: 60%;
+  right: 0%;
+  width: 22%;
   aspect-ratio: 4/3;
-  transform: rotate(7deg);
+  transform: rotate(8deg);
   z-index: 5;
-  opacity: 0.82;
+  opacity: 0.85;
 }
 
 /* Solid blue square — small backdrop highlight peeking from upper-right corner */
