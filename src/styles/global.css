@@ -23,9 +23,9 @@
 
   --line: #1F1F23;
 
-  /* Typography — all sans-serif (Persona × game UI aesthetic) */
-  --font-display: 'Outfit', 'Noto Sans SC', system-ui, sans-serif;
-  --font-sans: 'Outfit', 'Noto Sans SC', system-ui, sans-serif;
+  /* Typography — DengXian (Windows 等线) primary, fallback to web fonts */
+  --font-display: 'DengXian', '等线', 'Outfit', 'Noto Sans SC', system-ui, sans-serif;
+  --font-sans: 'DengXian', '等线', 'Outfit', 'Noto Sans SC', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
   /* Spacing */
