@@ -207,7 +207,6 @@ p + p { margin-top: var(--s-4); }
 }
 
 .sidebar__name-block {
-  margin-top: var(--s-2);
   display: block;
   position: relative;
   padding-top: var(--s-5);
@@ -217,37 +216,20 @@ p + p { margin-top: var(--s-4); }
   position: absolute;
   top: 0;
   left: 0;
-  width: 32px;
+  width: 24px;
   height: 2px;
   background: var(--accent);
   transition: width var(--duration) var(--ease);
 }
-.sidebar__name-block:hover::before { width: 60px; }
+.sidebar__name-block:hover::before { width: 48px; }
 
 .sidebar__name {
   font-family: var(--font-display);
-  font-size: 56px;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
   color: var(--ink);
-}
-.sidebar__name-en {
-  display: block;
-  margin-top: var(--s-3);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
-  color: var(--accent-bright);
-  text-transform: uppercase;
-}
-.sidebar__tagline {
-  margin-top: var(--s-5);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 15px;
-  line-height: 1.5;
-  color: var(--ink-muted);
 }
 
 .nav { display: flex; flex-direction: column; gap: 0; }
@@ -301,16 +283,29 @@ p + p { margin-top: var(--s-4); }
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: var(--s-3);
+  gap: var(--s-4);
+}
+.sidebar__social {
+  display: flex;
+  gap: var(--s-4);
+}
+.sidebar__social a {
+  width: 22px;
+  height: 22px;
+  color: var(--ink-muted);
+  transition: color var(--duration) var(--ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar__social a svg { width: 100%; height: 100%; }
+.sidebar__social a:hover { color: var(--accent-bright); }
+.sidebar__copy {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.18em;
   color: var(--ink-faint);
-  text-transform: uppercase;
 }
-.sidebar__social { display: flex; gap: var(--s-4); }
-.sidebar__social a { color: var(--ink-muted); transition: color var(--duration) var(--ease); }
-.sidebar__social a:hover { color: var(--accent-bright); }
 
 /* ---------- Hero / page openings ---------- */
 .hero {
