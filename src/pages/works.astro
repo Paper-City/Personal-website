@@ -1,203 +1,240 @@
 ---
 import Base from '../layouts/Base.astro';
 
+// Project tiles for the album.
+// Each tile occupies a grid area defined in CSS via the `area` field.
+// `cover` is a public image path; if absent, render a solid color block.
 const projects = [
+	{
+		num: 'P03',
+		title: 'Ash of Aetharn',
+		subtitle: '肉鸽 · RTS · 卡牌',
+		year: '进行中',
+		cover: '/prototype.jpg',
+		area: 'ash',
+		href: '#',
+	},
+	{
+		num: 'P02',
+		title: 'Outside the Blue',
+		subtitle: '太空生存 · 群组项目',
+		year: 'UAL · 2025',
+		cover: '/cover-outside-the-blue.png',
+		area: 'otb',
+		href: '#',
+	},
 	{
 		num: 'P01',
 		title: 'Slow & Fast',
 		subtitle: '卡牌圈地桌游',
-		year: '2024',
-		context: 'UAL · 独立完成',
-		blurb: '3×4 网格上用牌画线圈地的多人对抗桌游。围绕"随机性如何影响竞争性与策略性"展开的设计探索。',
-		tag: 'TABLETOP',
+		year: 'UAL · 2024',
+		cover: null,
+		fill: 'oxblood',
+		area: 'sf',
+		href: '#',
 	},
-	{
-		num: 'P03',
-		title: 'Ash of Aetharn',
-		subtitle: '肉鸽 · 即时战略 · 卡牌',
-		year: '进行中',
-		context: '独立开发',
-		blurb: '探索"探索系统作为肉鸽创新维度"的可能性——天气系统、RTS 式自由地图、刻印诅咒事件。',
-		tag: 'IN PROGRESS',
-	},
+];
+
+const placeholders = [
+	{ area: 'p1', fill: 'blue-deep', label: 'Coming Soon' },
+	{ area: 'p2', fill: 'blue-bright', label: 'Coming Soon' },
 ];
 ---
 
 <Base title="纸城 — 作品" current="作品">
-	<section class="hero hero--small">
-		<div class="bg-diagonal bg-diagonal--small"></div>
-		<div class="hero__inner">
+	<section class="works-hero">
+		<div class="works-hero__inner">
 			<div class="eyebrow fade-up fade-up--1">02 ─ 作品</div>
 			<h1 class="display-lg fade-up fade-up--2">Works</h1>
-			<p class="lead fade-up fade-up--3" style="margin-top: var(--s-5); max-width: 540px">
-				我做过的游戏项目<br />与对他人作品的设计分析。
+			<p class="lead fade-up fade-up--3">
+				我做过的游戏项目与原型。
 			</p>
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="section__head">
-			<span class="eyebrow">01 / Projects</span>
-			<h2>Projects</h2>
-		</div>
-		<div class="works-grid">
-			{projects.map((p, i) => (
-				<a href="#" class={`work-card ${i % 2 === 0 ? 'work-card--tilt-l' : 'work-card--tilt-r'}`}>
-					<div class="work-card__overlay"></div>
-					<div class="work-card__head">
-						<span class="work-card__num">{p.num}</span>
-						<span class="work-card__tag">{p.tag}</span>
-					</div>
-					<div class="work-card__main">
-						<h3 class="work-card__title">{p.title}</h3>
-						<div class="work-card__sub">{p.subtitle}</div>
-					</div>
-					<div class="work-card__foot">
-						<p class="work-card__blurb">{p.blurb}</p>
-						<div class="work-card__meta">
-							<span>{p.context}</span>
-							<span>{p.year}</span>
-						</div>
-					</div>
-					<div class="work-card__arrow">→</div>
-				</a>
-			))}
-		</div>
-	</section>
+	<section class="album fade-up fade-up--4">
+		{projects.map((p) => (
+			<a href={p.href} class={`album__tile area-${p.area} ${p.cover ? '' : 'album__tile--solid'} ${p.fill ? `fill-${p.fill}` : ''}`}>
+				{p.cover && <img src={p.cover} alt={p.title} loading="lazy" />}
+				<div class="album__overlay">
+					<div class="album__num">{p.num}</div>
+					<div class="album__title">{p.title}</div>
+					<div class="album__sub">{p.subtitle}</div>
+					<div class="album__year">{p.year}</div>
+				</div>
+			</a>
+		))}
 
-	<section class="section">
-		<div class="section__head">
-			<span class="eyebrow">02 / Game Analysis</span>
-			<h2>Game Analysis</h2>
-		</div>
-		<div class="empty-state">
-			<div class="empty-state__num">.0</div>
-			<p>[占位 — 等你做完第一篇游戏分析后填充]</p>
-		</div>
+		{placeholders.map((p) => (
+			<div class={`album__tile album__tile--coming area-${p.area} fill-${p.fill}`}>
+				<div class="album__overlay">
+					<div class="album__num">—</div>
+					<div class="album__title album__title--coming">{p.label}</div>
+				</div>
+			</div>
+		))}
 	</section>
 </Base>
 
 <style>
-	.hero--small { min-height: 40vh; padding-bottom: var(--s-7); }
+	.works-hero {
+		padding-top: var(--s-7);
+		padding-bottom: var(--s-7);
+	}
+	.works-hero__inner {
+		max-width: 720px;
+	}
+	.works-hero .lead {
+		margin-top: var(--s-4);
+		max-width: 540px;
+	}
 
-	.works-grid {
+	/* ---------- Album Grid ---------- */
+	.album {
 		display: grid;
-		grid-template-columns: 1fr;
-		gap: var(--s-6);
+		grid-template-columns: 2fr 1.2fr 1.2fr;
+		grid-template-rows: 320px 200px 240px;
+		grid-template-areas:
+			"ash  otb  sf"
+			"ash  otb  p1"
+			"p2   p2   p1";
+		gap: 12px;
+		margin-top: var(--s-7);
 	}
-	.work-card {
+
+	.area-ash { grid-area: ash; }
+	.area-otb { grid-area: otb; }
+	.area-sf  { grid-area: sf; }
+	.area-p1  { grid-area: p1; }
+	.area-p2  { grid-area: p2; }
+
+	/* ---------- Tile ---------- */
+	.album__tile {
 		position: relative;
-		display: grid;
-		grid-template-columns: auto 1fr auto;
-		gap: var(--s-6);
-		padding: var(--s-6) var(--s-7);
-		background: var(--bg-soft);
-		border: 1px solid var(--line);
-		transition: all var(--duration) var(--ease-out);
 		overflow: hidden;
+		border: 1px solid var(--line);
+		background: var(--bg-soft);
+		display: block;
+		text-decoration: none;
+		color: var(--ink);
+		transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
+		cursor: pointer;
 	}
-	.work-card--tilt-l:hover { transform: translateX(-6px); }
-	.work-card--tilt-r:hover { transform: translateX(6px); }
-	.work-card:hover { border-color: var(--accent); }
-	.work-card__overlay {
+	.album__tile:hover {
+		border-color: var(--accent-bright);
+		transform: translateY(-4px);
+	}
+	.album__tile--coming { cursor: default; }
+	.album__tile--coming:hover { transform: none; border-color: var(--line); }
+
+	/* Solid color fills (when no cover image) */
+	.fill-oxblood { background: linear-gradient(135deg, #7E2A24 0%, #4A1815 100%); }
+	.fill-blue-deep { background: linear-gradient(135deg, #0F1E80 0%, #060B40 100%); }
+	.fill-blue-bright { background: linear-gradient(135deg, #1E40FF 0%, #0F1E80 100%); }
+
+	/* Cover image */
+	.album__tile img {
 		position: absolute;
 		inset: 0;
-		background: var(--accent);
-		transform: translateX(-100%);
-		transition: transform var(--duration) var(--ease-out);
-		z-index: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 600ms var(--ease-out), filter var(--duration) var(--ease);
+		filter: saturate(0.85) contrast(1.05);
 	}
-	.work-card:hover .work-card__overlay { transform: translateX(0); }
-	.work-card > *:not(.work-card__overlay) { position: relative; z-index: 1; }
+	.album__tile:hover img {
+		transform: scale(1.05);
+		filter: saturate(1.1) contrast(1.1);
+	}
 
-	.work-card__head {
+	/* Dark gradient overlay for legibility */
+	.album__tile::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+		z-index: 1;
+		pointer-events: none;
+	}
+	.album__tile--coming::before {
+		background: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0.1));
+	}
+
+	/* Overlay text content */
+	.album__overlay {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: var(--s-5) var(--s-5) var(--s-4);
+		z-index: 2;
+		color: var(--ink);
 		display: flex;
 		flex-direction: column;
-		gap: var(--s-2);
-		padding-right: var(--s-5);
-		border-right: 1px solid var(--line);
-		min-width: 100px;
+		gap: 2px;
 	}
-	.work-card__num {
-		font-family: var(--font-display);
-		font-size: 32px;
-		font-weight: 600;
-		letter-spacing: -0.02em;
-		color: var(--accent-bright);
-		transition: color var(--duration) var(--ease);
-	}
-	.work-card:hover .work-card__num { color: var(--ink); }
-	.work-card__tag {
+	.album__num {
 		font-family: var(--font-mono);
-		font-size: 9px;
-		letter-spacing: 0.2em;
-		color: var(--ink-muted);
+		font-size: 11px;
+		letter-spacing: 0.22em;
+		color: var(--accent-bright);
+		margin-bottom: var(--s-2);
 	}
-
-	.work-card__main { padding-right: var(--s-4); }
-	.work-card__title {
+	.album__title {
 		font-family: var(--font-display);
-		
-		font-size: 32px;
-		line-height: 1;
+		font-size: clamp(20px, 2.4vw, 30px);
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.01em;
+	}
+	.album__title--coming {
 		font-weight: 500;
+		color: var(--ink-muted);
+		font-size: 18px;
 	}
-	.work-card__sub {
+	.album__sub {
 		margin-top: var(--s-2);
+		font-size: 13px;
 		color: var(--ink-secondary);
-		
 	}
-	.work-card__blurb {
-		margin-top: var(--s-3);
-		color: var(--ink-secondary);
-		font-size: 15px;
-	}
-	.work-card__meta {
-		margin-top: var(--s-3);
-		display: flex;
-		gap: var(--s-4);
+	.album__year {
+		margin-top: var(--s-2);
 		font-family: var(--font-mono);
 		font-size: 10px;
-		letter-spacing: 0.18em;
+		letter-spacing: 0.2em;
+		color: var(--ink-muted);
 		text-transform: uppercase;
-		color: var(--ink-muted);
-	}
-	.work-card__arrow {
-		align-self: center;
-		font-size: 24px;
-		color: var(--ink-muted);
-		transition: all var(--duration) var(--ease);
-	}
-	.work-card:hover .work-card__arrow {
-		color: var(--ink);
-		transform: translateX(4px);
 	}
 
-	.empty-state {
-		padding: var(--s-7);
-		border: 1px dashed var(--line);
-		display: flex;
-		gap: var(--s-5);
-		align-items: center;
+	/* Shrink overlay text on smaller tiles (sf, p1) */
+	.area-sf .album__title,
+	.area-p1 .album__title {
+		font-size: clamp(18px, 1.8vw, 22px);
 	}
-	.empty-state__num {
-		font-family: var(--font-display);
-		font-size: 64px;
-		color: var(--ink-faint);
-		line-height: 1;
-	}
-	.empty-state p { color: var(--ink-muted);  }
 
-	@media (max-width: 700px) {
-		.work-card { grid-template-columns: 1fr; }
-		.work-card__head {
-			flex-direction: row;
-			padding-right: 0;
-			border-right: none;
-			border-bottom: 1px solid var(--line);
-			padding-bottom: var(--s-3);
-			align-items: baseline;
+	/* Responsive */
+	@media (max-width: 900px) {
+		.album {
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 280px 200px 200px 180px;
+			grid-template-areas:
+				"ash ash"
+				"otb sf"
+				"otb p1"
+				"p2  p2";
 		}
-		.work-card__arrow { display: none; }
+	}
+	@media (max-width: 600px) {
+		.album {
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(5, 200px);
+			grid-template-areas:
+				"ash"
+				"otb"
+				"sf"
+				"p1"
+				"p2";
+			gap: 8px;
+		}
 	}
 </style>
