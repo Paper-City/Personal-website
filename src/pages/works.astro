@@ -15,6 +15,15 @@ const projects = [
 		href: '#',
 	},
 	{
+		num: 'P04',
+		title: 'Boatwright',
+		subtitle: '双人体感合作 · 划船游戏',
+		year: 'UAL · 2026',
+		cover: '/boat-wright-2.png',
+		area: 'boat',
+		href: '#',
+	},
+	{
 		num: 'P02',
 		title: 'Outside the Blue',
 		subtitle: '太空生存 · 群组项目',
@@ -93,20 +102,21 @@ const placeholders = [
 	.album {
 		display: grid;
 		grid-template-columns: 2fr 1.2fr 1.2fr;
-		grid-template-rows: 320px 200px 240px;
+		grid-template-rows: 320px 220px 300px;
 		grid-template-areas:
-			"ash  otb  sf"
-			"ash  otb  p1"
-			"p2   p2   p1";
+			"ash   otb  sf"
+			"ash   otb  p1"
+			"boat  boat p2";
 		gap: 12px;
 		margin-top: var(--s-7);
 	}
 
-	.area-ash { grid-area: ash; }
-	.area-otb { grid-area: otb; }
-	.area-sf  { grid-area: sf; }
-	.area-p1  { grid-area: p1; }
-	.area-p2  { grid-area: p2; }
+	.area-ash  { grid-area: ash; }
+	.area-otb  { grid-area: otb; }
+	.area-sf   { grid-area: sf; }
+	.area-p1   { grid-area: p1; }
+	.area-p2   { grid-area: p2; }
+	.area-boat { grid-area: boat; }
 
 	/* ---------- Tile ---------- */
 	.album__tile {
@@ -216,22 +226,24 @@ const placeholders = [
 	@media (max-width: 900px) {
 		.album {
 			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 280px 200px 200px 180px;
+			grid-template-rows: 280px 200px 200px 220px 180px;
 			grid-template-areas:
-				"ash ash"
-				"otb sf"
-				"otb p1"
-				"p2  p2";
+				"ash  ash"
+				"otb  sf"
+				"otb  p1"
+				"boat boat"
+				"p2   p2";
 		}
 	}
 	@media (max-width: 600px) {
 		.album {
 			grid-template-columns: 1fr;
-			grid-template-rows: repeat(5, 200px);
+			grid-template-rows: repeat(6, 200px);
 			grid-template-areas:
 				"ash"
 				"otb"
 				"sf"
+				"boat"
 				"p1"
 				"p2";
 			gap: 8px;
