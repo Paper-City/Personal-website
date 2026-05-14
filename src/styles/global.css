@@ -80,14 +80,14 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
 .display-lg {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(56px, 9vw, 120px);
+  font-size: clamp(44px, 7vw, 96px);
   line-height: 0.95;
   letter-spacing: -0.03em;
 }
 .display-md {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(28px, 4vw, 44px);
   line-height: 1.05;
   letter-spacing: -0.02em;
 }
@@ -101,7 +101,7 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
 }
 .lead {
   font-family: var(--font-display);
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-size: clamp(15px, 1.8vw, 22px);
   line-height: 1.5;
   color: var(--ink-secondary);
   font-weight: 400;
@@ -109,8 +109,8 @@ button { background: none; border: none; color: inherit; font: inherit; cursor: 
 .mono { font-family: var(--font-mono); }
 
 h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; color: var(--ink); }
-h2 { font-size: clamp(32px, 4.5vw, 56px); line-height: 1.05; letter-spacing: -0.01em; }
-h3 { font-size: 24px; line-height: 1.2; }
+h2 { font-size: clamp(22px, 3vw, 36px); line-height: 1.1; letter-spacing: -0.01em; }
+h3 { font-size: 20px; line-height: 1.2; }
 
 p { color: var(--ink-secondary); }
 p + p { margin-top: var(--s-4); }
