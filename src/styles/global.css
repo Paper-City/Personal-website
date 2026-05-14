@@ -137,7 +137,7 @@ p + p { margin-top: var(--s-4); }
 }
 
 .content {
-  padding: var(--s-9) var(--s-8) var(--s-11);
+  padding: var(--s-6) var(--s-8) var(--s-7);
   position: relative;
   overflow: hidden;
 }
@@ -308,13 +308,13 @@ p + p { margin-top: var(--s-4); }
 /* ---------- Hero / page openings ---------- */
 .hero {
   position: relative;
-  min-height: 65vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: var(--s-7) 0;
+  padding: var(--s-5) 0;
 }
-.hero__eyebrow { margin-bottom: var(--s-5); }
+.hero__eyebrow { margin-bottom: var(--s-3); }
 
 /* ---------- Photo tile collage ---------- */
 .tile-collage {
@@ -410,7 +410,7 @@ p + p { margin-top: var(--s-4); }
 .tile--accent::after { display: none; }
 
 /* ---------- Section ---------- */
-.section { margin-top: var(--s-10); position: relative; }
+.section { margin-top: var(--s-6); position: relative; }
 .section__head {
   display: flex;
   align-items: baseline;
