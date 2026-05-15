@@ -489,6 +489,81 @@ p + p { margin-top: var(--s-4); }
 }
 .bg-diagonal { animation: wipeIn 800ms var(--ease-out) both; }
 
+/* ---------- Project detail pages ---------- */
+.project {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--s-5) 0 var(--s-9);
+}
+.project__back {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  margin-bottom: var(--s-6);
+  transition: color var(--duration) var(--ease);
+}
+.project__back:hover { color: var(--accent-bright); }
+
+.project__head { margin-bottom: var(--s-7); }
+.project__eyebrow {
+  margin-bottom: var(--s-4);
+  font-size: 12px;
+}
+.project__title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: var(--s-3);
+}
+.project__subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.7vw, 20px);
+  color: var(--ink-secondary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+.project__cover {
+  margin: var(--s-6) 0 var(--s-7);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.project__cover img { width: 100%; height: auto; display: block; }
+.project__cover--solid {
+  height: 360px;
+  background: linear-gradient(135deg, #7E2A24 0%, #4A1815 100%);
+}
+
+.project__body { line-height: 1.85; }
+.project__body p {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--ink-secondary);
+  margin-bottom: var(--s-4);
+}
+.project__placeholder {
+  padding: var(--s-7) var(--s-6);
+  border: 1px dashed var(--line);
+  text-align: center;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+}
+
+.project__foot {
+  margin-top: var(--s-8);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+}
+
 /* Astro view transitions tweak */
 @view-transition { navigation: auto; }
 ::view-transition-old(root) { animation: fadeOut 250ms var(--ease-in) both; }
