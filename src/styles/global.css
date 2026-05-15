@@ -548,6 +548,97 @@ p + p { margin-top: var(--s-4); }
   color: var(--ink-secondary);
   margin-bottom: var(--s-4);
 }
+.project__body h2 {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 26px);
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: var(--s-8);
+  margin-bottom: var(--s-4);
+  padding-bottom: var(--s-3);
+  border-bottom: 1px solid var(--line);
+}
+.project__body > h2:first-child { margin-top: 0; }
+.project__body h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-top: var(--s-6);
+  margin-bottom: var(--s-3);
+}
+.project__body strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.project__body .project__role {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-secondary);
+  letter-spacing: 0.05em;
+}
+
+.project__principles {
+  list-style: none;
+  padding: 0;
+  margin: var(--s-4) 0;
+}
+.project__principles li {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  padding: var(--s-3) 0;
+  border-bottom: 1px dashed var(--line);
+}
+.project__principles li:last-child { border-bottom: none; }
+.project__principles li strong {
+  color: var(--accent-bright);
+}
+
+.project__iter {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--s-4) 0;
+  font-family: var(--font-display);
+  font-size: 15px;
+}
+.project__iter th,
+.project__iter td {
+  padding: var(--s-3) var(--s-4);
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-secondary);
+}
+.project__iter th {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.15em;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  font-weight: 500;
+  border-bottom-color: var(--accent-bright);
+}
+.project__iter tbody tr:last-child td { border-bottom: none; }
+
+.project__body .project__aside {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin: var(--s-3) 0 var(--s-5);
+}
+
+.project__body .project__principle-out {
+  margin: var(--s-5) 0 0;
+  padding: var(--s-4) var(--s-5);
+  background: var(--bg-soft);
+  border-left: 3px solid var(--accent-bright);
+  color: var(--ink);
+  font-size: 16px;
+}
+
 .project__placeholder {
   padding: var(--s-7) var(--s-6);
   border: 1px dashed var(--line);
