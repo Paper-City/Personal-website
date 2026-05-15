@@ -490,10 +490,34 @@ p + p { margin-top: var(--s-4); }
 .bg-diagonal { animation: wipeIn 800ms var(--ease-out) both; }
 
 /* ---------- Project detail pages ---------- */
+.project-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 640px;
+  z-index: 0;
+  pointer-events: none;
+  background-size: cover;
+  background-position: center top;
+  opacity: 0.5;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 20%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 20%, transparent 100%);
+}
 .project {
   max-width: 880px;
   margin: 0 auto;
   padding: var(--s-5) 0 var(--s-9);
+  position: relative;
+  z-index: 1;
+}
+.project__intro {
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.85;
+  color: var(--ink-secondary);
+  margin-top: var(--s-5);
+  max-width: 720px;
 }
 .project__back {
   display: inline-block;
