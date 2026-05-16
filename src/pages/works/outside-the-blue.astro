@@ -3,6 +3,8 @@ import Base from '../../layouts/Base.astro';
 ---
 
 <Base title="纸城 — Outside the Blue" current="作品">
+	<div class="project-bg" style="background-image: url('/cover-outside-the-blue.png');"></div>
+
 	<article class="project">
 		<a href="/works" class="project__back">← 作品</a>
 
@@ -12,12 +14,17 @@ import Base from '../../layouts/Base.astro';
 			<p class="project__subtitle">太空生存 · 资源管理</p>
 		</header>
 
-		<div class="project__cover">
-			<img src="/cover-outside-the-blue.png" alt="Outside the Blue" />
+		<div class="project__video">
+			<iframe
+				src="//player.bilibili.com/player.html?bvid=BV1gtLL6PEun&page=1&danmaku=0&high_quality=1"
+				scrolling="no"
+				frameborder="0"
+				allowfullscreen
+			></iframe>
 		</div>
 
 		<div class="project__body">
-			<p class="project__placeholder">内容稍后补充（含 gameplay 视频）</p>
+			<p class="project__placeholder">正文内容稍后补充</p>
 		</div>
 
 		<footer class="project__foot">
