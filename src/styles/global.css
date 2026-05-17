@@ -372,7 +372,7 @@ p + p { margin-top: var(--s-4); }
   width: 26%;
   aspect-ratio: 4/3;
   transform: rotate(9deg);
-  z-index: 7;
+  z-index: 8;
 }
 
 .tile--debug {
@@ -381,7 +381,7 @@ p + p { margin-top: var(--s-4); }
   width: 22%;
   aspect-ratio: 4/3;
   transform: rotate(-7deg);
-  z-index: 8;
+  z-index: 6;
 }
 
 .tile--boat {

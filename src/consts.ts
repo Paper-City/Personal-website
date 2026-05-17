@@ -13,5 +13,5 @@ export const NAV_ITEMS = [
 
 export const SOCIAL = {
 	github: 'https://github.com/Paper-City',
-	email: 'mailto:IceCubeukv@bsdmail.com',
+	email: 'mailto:2242321136@qq.com',
 };
