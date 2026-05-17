@@ -345,18 +345,18 @@ p + p { margin-top: var(--s-4); }
 /* Personal portrait — most prominent, central, foreground */
 .tile--portrait {
   top: 22%;
-  right: 24%;
-  width: 30%;
+  right: 26%;
+  width: 28%;
   aspect-ratio: 3/4;
   transform: rotate(-2deg);
   z-index: 10;
   box-shadow: 0 35px 100px rgba(0,0,0,0.7);
 }
 
-/* Workshop — top-left of cluster, overlaps portrait corner */
+/* Workshop — top-left candid photo */
 .tile--workshop {
-  top: 4%;
-  right: 36%;
+  top: 2%;
+  right: 38%;
   width: 22%;
   aspect-ratio: 4/3;
   transform: rotate(-6deg);
@@ -364,50 +364,66 @@ p + p { margin-top: var(--s-4); }
   opacity: 0.95;
 }
 
-/* Prototype — top-right (overlaps top of portrait) */
-.tile--prototype {
-  top: 14%;
-  right: 4%;
+/* Ash of Aetharn cover — top-right */
+.tile--ash {
+  top: 4%;
+  right: 6%;
+  width: 28%;
+  aspect-ratio: 16/9;
+  transform: rotate(6deg);
+  z-index: 7;
+}
+
+/* Boatwright cover — right side of portrait */
+.tile--boat {
+  top: 34%;
+  right: -3%;
   width: 26%;
+  aspect-ratio: 16/9;
+  transform: rotate(-5deg);
+  z-index: 8;
+}
+
+/* Miner cover — small square below portrait left */
+.tile--miner {
+  top: 58%;
+  right: 36%;
+  width: 16%;
+  aspect-ratio: 1/1;
+  transform: rotate(10deg);
+  z-index: 9;
+}
+
+/* Presentation — left of bottom cluster */
+.tile--presentation {
+  top: 68%;
+  right: 50%;
+  width: 22%;
   aspect-ratio: 4/3;
+  transform: rotate(-7deg);
+  z-index: 6;
+  opacity: 0.92;
+}
+
+/* Midnight (12Oclock) cover — bottom center */
+.tile--midnight {
+  top: 70%;
+  right: 16%;
+  width: 24%;
+  aspect-ratio: 16/9;
   transform: rotate(4deg);
   z-index: 7;
 }
 
-/* Presentation — bottom-left (overlaps bottom of portrait) */
-.tile--presentation {
-  top: 64%;
-  right: 28%;
+/* Debug (DebugMyLife) cover — bottom right */
+.tile--debug {
+  top: 86%;
+  right: 4%;
   width: 24%;
-  aspect-ratio: 4/3;
-  transform: rotate(-7deg);
+  aspect-ratio: 16/9;
+  transform: rotate(-5deg);
   z-index: 8;
 }
-
-/* Exhibition — bottom-right edge */
-.tile--exhibition {
-  top: 60%;
-  right: 0%;
-  width: 22%;
-  aspect-ratio: 4/3;
-  transform: rotate(8deg);
-  z-index: 5;
-  opacity: 0.85;
-}
-
-/* Solid blue square — small backdrop highlight peeking from upper-right corner */
-.tile--accent {
-  top: -2%;
-  right: 6%;
-  width: 11%;
-  aspect-ratio: 1/1;
-  transform: rotate(18deg);
-  z-index: 3;
-  background: var(--accent-bright);
-  box-shadow: 0 25px 80px var(--accent-glow);
-  opacity: 0.7;
-}
-.tile--accent::after { display: none; }
 
 /* ---------- Section ---------- */
 .section { margin-top: var(--s-10); position: relative; }
