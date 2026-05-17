@@ -122,12 +122,12 @@ const placeholders: { area: string; fill: string; label: string }[] = [];
 	.album {
 		display: grid;
 		grid-template-columns: 2fr 1.2fr 1.2fr;
-		grid-template-rows: 320px 300px 260px 260px;
+		grid-template-rows: 320px 220px 260px 260px;
 		grid-template-areas:
 			"ash    otb   sf"
-			"ash    otb   p2"
-			"boat   boat  boat"
-			"p1     p1    p07";
+			"ash    otb   sf"
+			"boat   boat  p07"
+			"p1     p1    p2";
 		gap: 12px;
 		margin-top: 18px;
 	}
@@ -248,13 +248,12 @@ const placeholders: { area: string; fill: string; label: string }[] = [];
 	@media (max-width: 900px) {
 		.album {
 			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 280px 200px 200px 220px 200px;
+			grid-template-rows: 280px 200px 220px 200px;
 			grid-template-areas:
 				"ash   ash"
 				"otb   sf"
-				"otb   p2"
-				"boat  boat"
-				"p1    p07";
+				"boat  p07"
+				"p1    p2";
 		}
 	}
 	@media (max-width: 600px) {
@@ -265,10 +264,10 @@ const placeholders: { area: string; fill: string; label: string }[] = [];
 				"ash"
 				"otb"
 				"sf"
-				"p2"
 				"boat"
+				"p07"
 				"p1"
-				"p07";
+				"p2";
 			gap: 8px;
 		}
 	}
