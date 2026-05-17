@@ -33,6 +33,97 @@ const {
 			</main>
 		</div>
 
+		<!-- Lightbox: opened by clicking thumbnails inside .project__concept, .project__docs, .project__engineering-img -->
+		<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
+			<button class="lightbox__close" type="button" aria-label="关闭">×</button>
+			<button class="lightbox__nav lightbox__prev" type="button" aria-label="上一张">‹</button>
+			<button class="lightbox__nav lightbox__next" type="button" aria-label="下一张">›</button>
+			<figure class="lightbox__figure">
+				<img class="lightbox__img" alt="" />
+				<figcaption class="lightbox__caption"></figcaption>
+			</figure>
+			<div class="lightbox__counter"></div>
+		</div>
+
+		<script>
+			// Lightbox — groups thumbnails inside the same container, prev/next within group.
+			function attachLightbox() {
+				const lightbox = document.getElementById('lightbox');
+				if (!lightbox) return;
+				const img = lightbox.querySelector('.lightbox__img') as HTMLImageElement;
+				const caption = lightbox.querySelector('.lightbox__caption') as HTMLElement;
+				const counter = lightbox.querySelector('.lightbox__counter') as HTMLElement;
+				const closeBtn = lightbox.querySelector('.lightbox__close') as HTMLButtonElement;
+				const prevBtn = lightbox.querySelector('.lightbox__prev') as HTMLButtonElement;
+				const nextBtn = lightbox.querySelector('.lightbox__next') as HTMLButtonElement;
+
+				let group: { src: string; alt: string; caption: string }[] = [];
+				let idx = 0;
+
+				function show() {
+					const it = group[idx];
+					img.src = it.src;
+					img.alt = it.alt;
+					caption.textContent = it.caption;
+					counter.textContent = group.length > 1 ? `${idx + 1} / ${group.length}` : '';
+					prevBtn.style.display = group.length > 1 ? '' : 'none';
+					nextBtn.style.display = group.length > 1 ? '' : 'none';
+				}
+				function open(g: typeof group, i: number) {
+					group = g; idx = i;
+					show();
+					lightbox.classList.add('is-open');
+					document.body.style.overflow = 'hidden';
+				}
+				function close() {
+					lightbox.classList.remove('is-open');
+					document.body.style.overflow = '';
+				}
+				const prev = () => { idx = (idx - 1 + group.length) % group.length; show(); };
+				const next = () => { idx = (idx + 1) % group.length; show(); };
+
+				closeBtn.onclick = close;
+				prevBtn.onclick = prev;
+				nextBtn.onclick = next;
+				lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+
+				const keyHandler = (e: KeyboardEvent) => {
+					if (!lightbox.classList.contains('is-open')) return;
+					if (e.key === 'Escape') close();
+					else if (e.key === 'ArrowLeft') prev();
+					else if (e.key === 'ArrowRight') next();
+				};
+				document.addEventListener('keydown', keyHandler);
+
+				// Multi-image containers — each container is its own group
+				['.project__concept', '.project__docs'].forEach((sel) => {
+					document.querySelectorAll(sel).forEach((box) => {
+						const links = Array.from(box.querySelectorAll<HTMLAnchorElement>('a'));
+						const g = links.map((a) => {
+							const i = a.querySelector('img');
+							const cap = a.querySelector('.project__concept-item-cap, .project__doc-cap');
+							return {
+								src: a.getAttribute('href') || '',
+								alt: (i && i.alt) || '',
+								caption: (cap && cap.textContent) || '',
+							};
+						});
+						links.forEach((a, n) => {
+							a.addEventListener('click', (e) => { e.preventDefault(); open(g, n); });
+						});
+					});
+				});
+
+				// Single-image: engineering screenshot
+				document.querySelectorAll<HTMLAnchorElement>('.project__engineering-img').forEach((a) => {
+					const i = a.querySelector('img');
+					const g = [{ src: a.getAttribute('href') || '', alt: (i && i.alt) || '', caption: '' }];
+					a.addEventListener('click', (e) => { e.preventDefault(); open(g, 0); });
+				});
+			}
+			document.addEventListener('astro:page-load', attachLightbox);
+		</script>
+
 		<script>
 			// Parallax tile collage — depth-based drift with mouse position.
 			// data-depth: 1 (foreground, subtle) / 2 (mid) / 3 (background, strong)
