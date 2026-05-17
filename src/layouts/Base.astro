@@ -36,6 +36,12 @@ const {
 		<!-- Lightbox: opened by clicking thumbnails inside .project__concept, .project__docs, .project__engineering-img -->
 		<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog">
 			<button class="lightbox__close" type="button" aria-label="关闭">×</button>
+			<div class="lightbox__zoom">
+				<button class="lightbox__zoom-btn" data-zoom="out" type="button" aria-label="缩小">−</button>
+				<span class="lightbox__zoom-level">100%</span>
+				<button class="lightbox__zoom-btn" data-zoom="in" type="button" aria-label="放大">+</button>
+				<button class="lightbox__zoom-btn lightbox__zoom-reset" data-zoom="reset" type="button" aria-label="重置">⤺</button>
+			</div>
 			<button class="lightbox__nav lightbox__prev" type="button" aria-label="上一张">‹</button>
 			<button class="lightbox__nav lightbox__next" type="button" aria-label="下一张">›</button>
 			<figure class="lightbox__figure">
@@ -56,9 +62,25 @@ const {
 				const closeBtn = lightbox.querySelector('.lightbox__close') as HTMLButtonElement;
 				const prevBtn = lightbox.querySelector('.lightbox__prev') as HTMLButtonElement;
 				const nextBtn = lightbox.querySelector('.lightbox__next') as HTMLButtonElement;
+				const zoomLevel = lightbox.querySelector('.lightbox__zoom-level') as HTMLElement;
+				const zoomBtns = lightbox.querySelectorAll<HTMLButtonElement>('.lightbox__zoom-btn');
 
 				let group: { src: string; alt: string; caption: string }[] = [];
 				let idx = 0;
+				let zoom = 1, panX = 0, panY = 0;
+				const Z_MIN = 0.5, Z_MAX = 4, Z_STEP = 0.25;
+
+				function applyTransform() {
+					img.style.transform = `translate(${panX}px, ${panY}px) scale(${zoom})`;
+					img.style.cursor = zoom > 1 ? 'grab' : '';
+					if (zoomLevel) zoomLevel.textContent = `${Math.round(zoom * 100)}%`;
+				}
+				function setZoom(z: number) {
+					zoom = Math.max(Z_MIN, Math.min(Z_MAX, z));
+					if (zoom === 1) { panX = 0; panY = 0; }
+					applyTransform();
+				}
+				function resetZoom() { zoom = 1; panX = 0; panY = 0; applyTransform(); }
 
 				function show() {
 					const it = group[idx];
@@ -68,6 +90,7 @@ const {
 					counter.textContent = group.length > 1 ? `${idx + 1} / ${group.length}` : '';
 					prevBtn.style.display = group.length > 1 ? '' : 'none';
 					nextBtn.style.display = group.length > 1 ? '' : 'none';
+					resetZoom();
 				}
 				function open(g: typeof group, i: number) {
 					group = g; idx = i;
@@ -87,11 +110,52 @@ const {
 				nextBtn.onclick = next;
 				lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
 
+				zoomBtns.forEach((btn) => {
+					btn.addEventListener('click', (e) => {
+						e.stopPropagation();
+						const action = btn.dataset.zoom;
+						if (action === 'in') setZoom(zoom + Z_STEP);
+						else if (action === 'out') setZoom(zoom - Z_STEP);
+						else if (action === 'reset') resetZoom();
+					});
+				});
+
+				lightbox.addEventListener('wheel', (e) => {
+					if (!lightbox.classList.contains('is-open')) return;
+					e.preventDefault();
+					setZoom(zoom + (e.deltaY < 0 ? Z_STEP : -Z_STEP));
+				}, { passive: false });
+
+				// Drag-pan when zoomed in
+				let dragging = false, sx = 0, sy = 0;
+				img.addEventListener('mousedown', (e) => {
+					if (zoom <= 1) return;
+					dragging = true;
+					sx = e.clientX - panX;
+					sy = e.clientY - panY;
+					img.style.cursor = 'grabbing';
+					e.preventDefault();
+				});
+				window.addEventListener('mousemove', (e) => {
+					if (!dragging) return;
+					panX = e.clientX - sx;
+					panY = e.clientY - sy;
+					applyTransform();
+				});
+				window.addEventListener('mouseup', () => {
+					if (!dragging) return;
+					dragging = false;
+					img.style.cursor = zoom > 1 ? 'grab' : '';
+				});
+
 				const keyHandler = (e: KeyboardEvent) => {
 					if (!lightbox.classList.contains('is-open')) return;
 					if (e.key === 'Escape') close();
 					else if (e.key === 'ArrowLeft') prev();
 					else if (e.key === 'ArrowRight') next();
+					else if (e.key === '+' || e.key === '=') { e.preventDefault(); setZoom(zoom + Z_STEP); }
+					else if (e.key === '-' || e.key === '_') { e.preventDefault(); setZoom(zoom - Z_STEP); }
+					else if (e.key === '0') { e.preventDefault(); resetZoom(); }
 				};
 				document.addEventListener('keydown', keyHandler);
 
