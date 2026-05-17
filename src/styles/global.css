@@ -357,12 +357,12 @@ p + p { margin-top: var(--s-4); }
 /* 8 tiles cluster tightly around portrait, cropped to near-square via aspect-ratio + object-fit: cover */
 
 .tile--slowfast {
-  top: 6%;
-  right: 36%;
+  top: 60%;
+  right: 30%;
   width: 22%;
   aspect-ratio: 1/1;
-  transform: rotate(-12deg);
-  z-index: 6;
+  transform: rotate(11deg);
+  z-index: 7;
   opacity: 0.95;
 }
 
@@ -412,12 +412,12 @@ p + p { margin-top: var(--s-4); }
 }
 
 .tile--otb {
-  top: 60%;
-  right: 30%;
+  top: 6%;
+  right: 36%;
   width: 22%;
   aspect-ratio: 1/1;
-  transform: rotate(11deg);
-  z-index: 7;
+  transform: rotate(-12deg);
+  z-index: 6;
   opacity: 0.95;
 }
 
