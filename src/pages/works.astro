@@ -33,6 +33,26 @@ const projects = [
 		href: '/works/dwarf-miner',
 	},
 	{
+		num: 'P06',
+		title: '12Oclock',
+		subtitle: '待补充',
+		year: '进行中',
+		cover: null,
+		fill: 'blue-deep',
+		area: 'p1',
+		href: '/works/12-oclock',
+	},
+	{
+		num: 'P07',
+		title: 'DebugMyLife',
+		subtitle: '待补充',
+		year: '进行中',
+		cover: null,
+		fill: 'blue-bright',
+		area: 'p07',
+		href: '/works/debug-my-life',
+	},
+	{
 		num: 'P02',
 		title: 'Outside the Blue',
 		subtitle: '太空生存 · 资源管理',
@@ -52,9 +72,7 @@ const projects = [
 	},
 ];
 
-const placeholders = [
-	{ area: 'p1', fill: 'blue-deep', label: 'Coming Soon' },
-];
+const placeholders: { area: string; fill: string; label: string }[] = [];
 ---
 
 <Base title="纸城 — 作品" current="作品">
@@ -104,12 +122,12 @@ const placeholders = [
 	.album {
 		display: grid;
 		grid-template-columns: 2fr 1.2fr 1.2fr;
-		grid-template-rows: 320px 160px 60px 300px;
+		grid-template-rows: 320px 300px 260px 260px;
 		grid-template-areas:
-			"ash   otb  sf"
-			"ash   otb  p2"
-			"ash   otb  p1"
-			"boat  boat p1";
+			"ash    otb   sf"
+			"ash    otb   p2"
+			"boat   boat  boat"
+			"p1     p1    p07";
 		gap: 12px;
 		margin-top: 18px;
 	}
@@ -119,6 +137,7 @@ const placeholders = [
 	.area-sf   { grid-area: sf; }
 	.area-p1   { grid-area: p1; }
 	.area-p2   { grid-area: p2; }
+	.area-p07  { grid-area: p07; }
 	.area-boat { grid-area: boat; }
 
 	/* ---------- Tile ---------- */
@@ -229,26 +248,27 @@ const placeholders = [
 	@media (max-width: 900px) {
 		.album {
 			grid-template-columns: 1fr 1fr;
-			grid-template-rows: 280px 200px 200px 220px 180px;
+			grid-template-rows: 280px 200px 200px 220px 200px;
 			grid-template-areas:
-				"ash  ash"
-				"otb  sf"
-				"otb  p1"
-				"boat boat"
-				"p2   p2";
+				"ash   ash"
+				"otb   sf"
+				"otb   p2"
+				"boat  boat"
+				"p1    p07";
 		}
 	}
 	@media (max-width: 600px) {
 		.album {
 			grid-template-columns: 1fr;
-			grid-template-rows: repeat(6, 200px);
+			grid-template-rows: repeat(7, 200px);
 			grid-template-areas:
 				"ash"
 				"otb"
 				"sf"
+				"p2"
 				"boat"
 				"p1"
-				"p2";
+				"p07";
 			gap: 8px;
 		}
 	}
