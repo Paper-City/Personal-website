@@ -342,9 +342,9 @@ p + p { margin-top: var(--s-4); }
   pointer-events: none;
 }
 
-/* Personal portrait — focal point of the photo cluster */
+/* Personal portrait — central anchor, kept at original position */
 .tile--portrait {
-  top: 18%;
+  top: 22%;
   right: 22%;
   width: 28%;
   aspect-ratio: 3/4;
@@ -353,71 +353,71 @@ p + p { margin-top: var(--s-4); }
   box-shadow: 0 35px 100px rgba(0,0,0,0.7);
 }
 
-/* All other tiles cluster tightly around the portrait, heavily overlapping */
+/* 8 tiles cluster tightly around portrait, cropped to near-square via aspect-ratio + object-fit: cover */
 
 .tile--workshop {
-  top: 4%;
-  right: 38%;
-  width: 22%;
+  top: 6%;
+  right: 36%;
+  width: 24%;
   aspect-ratio: 4/3;
-  transform: rotate(-10deg);
+  transform: rotate(-12deg);
   z-index: 6;
   opacity: 0.95;
 }
 
 .tile--ash {
-  top: 0%;
-  right: 14%;
-  width: 28%;
-  aspect-ratio: 16/9;
-  transform: rotate(7deg);
+  top: 2%;
+  right: 10%;
+  width: 26%;
+  aspect-ratio: 4/3;
+  transform: rotate(9deg);
   z-index: 7;
 }
 
 .tile--debug {
-  top: 22%;
-  right: 44%;
+  top: 10%;
+  right: -2%;
   width: 22%;
-  aspect-ratio: 16/9;
-  transform: rotate(8deg);
-  z-index: 7;
-}
-
-.tile--boat {
-  top: 30%;
-  right: 0%;
-  width: 24%;
-  aspect-ratio: 16/9;
-  transform: rotate(-8deg);
+  aspect-ratio: 4/3;
+  transform: rotate(-7deg);
   z-index: 8;
 }
 
+.tile--boat {
+  top: 36%;
+  right: -2%;
+  width: 26%;
+  aspect-ratio: 4/3;
+  transform: rotate(8deg);
+  z-index: 9;
+}
+
 .tile--miner {
-  top: 48%;
-  right: 28%;
-  width: 18%;
+  top: 44%;
+  right: 38%;
+  width: 22%;
   aspect-ratio: 1/1;
-  transform: rotate(-6deg);
+  transform: rotate(13deg);
   z-index: 9;
 }
 
 .tile--midnight {
-  top: 50%;
-  right: 42%;
-  width: 24%;
-  aspect-ratio: 16/9;
-  transform: rotate(-10deg);
-  z-index: 7;
+  top: 56%;
+  right: 8%;
+  width: 26%;
+  aspect-ratio: 4/3;
+  transform: rotate(-9deg);
+  z-index: 8;
 }
 
 .tile--presentation {
-  top: 50%;
-  right: 4%;
-  width: 22%;
+  top: 60%;
+  right: 30%;
+  width: 24%;
   aspect-ratio: 4/3;
-  transform: rotate(10deg);
-  z-index: 8;
-  opacity: 0.92;
+  transform: rotate(11deg);
+  z-index: 7;
+  opacity: 0.95;
 }
 
 /* ---------- Section ---------- */
