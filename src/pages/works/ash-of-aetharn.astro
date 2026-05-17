@@ -3,6 +3,8 @@ import Base from '../../layouts/Base.astro';
 ---
 
 <Base title="纸城 — Ash of Aetharn" current="作品">
+	<div class="project-bg" style="background-image: url('/prototype.jpg');"></div>
+
 	<article class="project">
 		<a href="/works" class="project__back">← 作品</a>
 
@@ -10,14 +12,71 @@ import Base from '../../layouts/Base.astro';
 			<div class="eyebrow project__eyebrow">P03 · 进行中</div>
 			<h1 class="project__title">Ash of Aetharn</h1>
 			<p class="project__subtitle">肉鸽 · RTS · 卡牌</p>
+			<p class="project__intro">Ash of Aetharn 是一款融合即时战略与 Roguelike 的游戏。玩家扮演复苏的领袖，在一张数百英亩的战役地图上推进据点、生产单位、释放魔法，重建破碎的家园。</p>
 		</header>
 
-		<div class="project__cover">
-			<img src="/prototype.jpg" alt="Ash of Aetharn" />
-		</div>
-
 		<div class="project__body">
-			<p class="project__placeholder">内容稍后补充</p>
+			<h2>我的工作</h2>
+			<p class="project__role">主策划 · 系统策划 · 代码实现</p>
+
+			<h2>核心特色</h2>
+			<ul class="project__principles">
+				<li><strong>阵营机制差异化</strong>——不同势力以独立的资源/单位/魔法循环对抗，引出风格迥异的玩法</li>
+				<li><strong>动态 AI 系统</strong>——AI 跟随玩家成长，从被动应对到主动反制</li>
+				<li><strong>星级系统</strong>——单位按近战 / 远程 × 普通 / 精英分四阶星位，构筑组合空间</li>
+				<li><strong>自然涌现的战术</strong>——2D 物理 + 单位碰撞体让阵型布置自带战术深度</li>
+			</ul>
+
+			<h2>设计与迭代</h2>
+			<p class="project__placeholder">设计迭代故事稍后补充</p>
+
+			<h2>概念文档</h2>
+			<p>5 页项目概念文档节选（点击查看大图）：</p>
+			<div class="project__concept">
+				<a href="/ash-aetharn-concept-1.png" class="project__concept-item" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-concept-1.png" alt="概念文档封面" loading="lazy" />
+					<span class="project__concept-item-cap">封面</span>
+				</a>
+				<a href="/ash-aetharn-concept-2.png" class="project__concept-item" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-concept-2.png" alt="游戏概述与世界观" loading="lazy" />
+					<span class="project__concept-item-cap">概述 / 世界</span>
+				</a>
+				<a href="/ash-aetharn-concept-3.png" class="project__concept-item" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-concept-3.png" alt="玩法介绍" loading="lazy" />
+					<span class="project__concept-item-cap">玩法介绍</span>
+				</a>
+				<a href="/ash-aetharn-concept-4.png" class="project__concept-item" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-concept-4.png" alt="核心特色" loading="lazy" />
+					<span class="project__concept-item-cap">核心特色</span>
+				</a>
+				<a href="/ash-aetharn-concept-5.png" class="project__concept-item" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-concept-5.png" alt="自然涌现的战术" loading="lazy" />
+					<span class="project__concept-item-cap">涌现战术</span>
+				</a>
+			</div>
+
+			<h2>策划文档节选</h2>
+			<p>数据驱动的系统设计——单位与祝福/诅咒的 schema 化配置（点击查看大图）：</p>
+			<div class="project__docs">
+				<a href="/ash-aetharn-gdd-units.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-gdd-units.png" alt="单位数据表" loading="lazy" />
+					<span class="project__doc-cap">单位数据（faction / cost / atk / hp / spd / move_type）</span>
+				</a>
+				<a href="/ash-aetharn-gdd-blessings.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-gdd-blessings.png" alt="祝福与诅咒数据表" loading="lazy" />
+					<span class="project__doc-cap">祝福 / 诅咒数据（type / duration / script_path）</span>
+				</a>
+			</div>
+
+			<h2>工程实践</h2>
+			<div class="project__engineering">
+				<a href="/ash-aetharn-github.png" class="project__engineering-img" target="_blank" rel="noopener">
+					<img src="/ash-aetharn-github.png" alt="GitHub 分支结构" loading="lazy" />
+				</a>
+				<div class="project__engineering-note">
+					采用 <strong>feature-branch workflow</strong>：5 个 feature 分支并行（player-hud / blessing-curse-system / loot-architecture / event-system 等），主分支保持稳定，单分支平均 280+ commits。
+				</div>
+			</div>
 		</div>
 
 		<footer class="project__foot">
