@@ -325,6 +325,7 @@ p + p { margin-top: var(--s-4); }
   height: 110%;
   pointer-events: none;
   z-index: 0;
+  transform: translate(-30px, 10px);
 }
 .tile {
   position: absolute;
