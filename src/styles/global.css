@@ -342,87 +342,82 @@ p + p { margin-top: var(--s-4); }
   pointer-events: none;
 }
 
-/* Personal portrait — most prominent, central, foreground */
+/* Personal portrait — focal point of the photo cluster */
 .tile--portrait {
-  top: 20%;
-  right: 28%;
-  width: 34%;
+  top: 18%;
+  right: 22%;
+  width: 28%;
   aspect-ratio: 3/4;
-  transform: rotate(-2deg);
+  transform: rotate(-3deg);
   z-index: 10;
   box-shadow: 0 35px 100px rgba(0,0,0,0.7);
 }
 
-/* Workshop — top-left candid photo */
+/* All other tiles cluster tightly around the portrait, heavily overlapping */
+
 .tile--workshop {
-  top: -2%;
-  right: 36%;
-  width: 30%;
+  top: 4%;
+  right: 38%;
+  width: 22%;
   aspect-ratio: 4/3;
-  transform: rotate(-8deg);
+  transform: rotate(-10deg);
   z-index: 6;
   opacity: 0.95;
 }
 
-/* Ash of Aetharn cover — top-right corner */
 .tile--ash {
-  top: -2%;
-  right: -2%;
-  width: 38%;
+  top: 0%;
+  right: 14%;
+  width: 28%;
   aspect-ratio: 16/9;
   transform: rotate(7deg);
   z-index: 7;
 }
 
-/* Boatwright cover — right side, overlaps portrait right edge */
-.tile--boat {
-  top: 36%;
-  right: -6%;
-  width: 36%;
+.tile--debug {
+  top: 22%;
+  right: 44%;
+  width: 22%;
   aspect-ratio: 16/9;
-  transform: rotate(-6deg);
-  z-index: 8;
-}
-
-/* Miner cover — square, overlaps below portrait left */
-.tile--miner {
-  top: 48%;
-  right: 38%;
-  width: 24%;
-  aspect-ratio: 1/1;
-  transform: rotate(12deg);
-  z-index: 9;
-}
-
-/* Presentation — left of bottom cluster, overlaps */
-.tile--presentation {
-  top: 64%;
-  right: 48%;
-  width: 28%;
-  aspect-ratio: 4/3;
-  transform: rotate(-9deg);
-  z-index: 6;
-  opacity: 0.92;
-}
-
-/* Midnight (12Oclock) cover — bottom center */
-.tile--midnight {
-  top: 64%;
-  right: 14%;
-  width: 34%;
-  aspect-ratio: 16/9;
-  transform: rotate(5deg);
+  transform: rotate(8deg);
   z-index: 7;
 }
 
-/* Debug (DebugMyLife) cover — bottom right corner */
-.tile--debug {
-  top: 84%;
-  right: -4%;
-  width: 36%;
+.tile--boat {
+  top: 30%;
+  right: 0%;
+  width: 24%;
   aspect-ratio: 16/9;
-  transform: rotate(-7deg);
+  transform: rotate(-8deg);
   z-index: 8;
+}
+
+.tile--miner {
+  top: 48%;
+  right: 28%;
+  width: 18%;
+  aspect-ratio: 1/1;
+  transform: rotate(-6deg);
+  z-index: 9;
+}
+
+.tile--midnight {
+  top: 50%;
+  right: 42%;
+  width: 24%;
+  aspect-ratio: 16/9;
+  transform: rotate(-10deg);
+  z-index: 7;
+}
+
+.tile--presentation {
+  top: 50%;
+  right: 4%;
+  width: 22%;
+  aspect-ratio: 4/3;
+  transform: rotate(10deg);
+  z-index: 8;
+  opacity: 0.92;
 }
 
 /* ---------- Section ---------- */
