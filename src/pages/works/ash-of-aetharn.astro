@@ -11,24 +11,62 @@ import Base from '../../layouts/Base.astro';
 		<header class="project__head">
 			<div class="eyebrow project__eyebrow">P03 · 进行中</div>
 			<h1 class="project__title">Ash of Aetharn</h1>
-			<p class="project__subtitle">肉鸽 · RTS · 卡牌</p>
-			<p class="project__intro">Ash of Aetharn 是一款融合即时战略与 Roguelike 的游戏。玩家扮演复苏的领袖，在一张数百英亩的战役地图上推进据点、生产单位、释放魔法，重建破碎的家园。</p>
+			<p class="project__subtitle">RTS · 肉鸽 · AI 协同开发</p>
+			<p class="project__intro">Ash of Aetharn 是一款 2D 横版即时战略 + Roguelite 独立游戏，基于 Godot 4 开发。玩家扮演复苏的领袖，在战役地图上推进据点、生产单位、释放魔法，重建破碎的家园。</p>
+			<p class="project__intro">项目的核心目标是<strong>探索可复用的 AI 辅助游戏开发流程</strong>——将 Claude Chat（设计决策）与 Claude Code（工程实现）的协作模式沉淀为一套可推广的规范与方法论；最终交付物是一款面向 Steam 发行的高质量独立游戏 demo，与一套独立可复用的 AI 协同工作流方法论文档。</p>
 		</header>
 
 		<div class="project__body">
 			<h2>我的工作</h2>
-			<p class="project__role">独立开发 · 玩法设计 · 系统设计 · 数值调整</p>
+			<p class="project__role">独立开发 · 玩法 / 系统设计 · 数值平衡 · 工程实现 · AI 工作流设计</p>
 
-			<h2>核心特色</h2>
+			<p>截至当前（P3 全量构建阶段），已实现的系统覆盖战斗、探索、构筑、商业化与内容生产的全链路：</p>
 			<ul class="project__principles">
-				<li><strong>阵营机制差异化</strong>——不同势力以独立的资源/单位/魔法循环对抗，引出风格迥异的玩法</li>
+				<li><strong>战斗系统</strong>——费用 / 攻击 / 状态 / 魔法 / UI 全套，基础状态机 + 场景切换框架</li>
+				<li><strong>探索地图</strong>——领土扩张模型，事件 / 商店 / 任务挂接</li>
+				<li><strong>背包 + 战前配置</strong>——v2 动作按钮 + 卡牌选择 modal 视图</li>
+				<li><strong>存档系统</strong>——跨场景与跨局数据序列化</li>
+				<li><strong>战斗奖励系统</strong>——基于通用 Action 抽象的统一奖励接口</li>
+				<li><strong>升星合成系统</strong>——近战 / 远程 × 普通 / 精英的四阶单位星位构筑</li>
+				<li><strong>遗物系统</strong>——按权重抽取的 cross-battle 永久增益</li>
+				<li><strong>领袖系统</strong>——含选择界面与差异化能力</li>
+				<li><strong>敌方 AI</strong>——Commander 架构，从被动应对到策略性决策</li>
+				<li><strong>事件系统</strong>——作为奖励 / 惩罚 / 叙事载体</li>
+				<li><strong>商店系统</strong>——含行商机制</li>
+				<li><strong>祝福 / 诅咒系统</strong>——玩家身上的 cross-battle buff / debuff</li>
+				<li><strong>刻印系统</strong>——卡牌级永久 modifier，构筑维度增强</li>
+				<li><strong>音频 + 美术管线</strong>——BGM 接入 + 占位单图 + Tween 程序化</li>
+			</ul>
+
+			<h2>AI 协同工作流方法论</h2>
+			<p>项目的第二条产出线，沉淀为一套独立可复用的方法论：</p>
+			<ul class="project__principles">
+				<li><strong>Chat × Code 双角色，职责严格分离</strong>——Claude Chat 主导设计决策与方案审查，Claude Code 主导架构提案与代码实现，二者边界清晰、互不越位。</li>
+				<li><strong>强制工作流</strong>——Code 收到需求后必须按"评估现状 → 提出架构方案 → 列出决策选择题 → 等待开发者拍板 → 实施"五步推进，技术细节视为参考而非规定，不机械执行。</li>
+				<li><strong>五层文档体系功能正交</strong>——GDD（数值）/ TDD（架构）/ design（决策演进）/ methodology（可复用经验）/ balance（数值调整记录），各装各的、不重叠。</li>
+				<li><strong>计划与记录分离</strong>——里程碑 / 模块 / 长期技术债 / inbox 收件箱 / 模块子任务 5 个概念明确归位；9 个命令式 Agent 行为触发场景，让 Agent 按场景对照行动而不靠上下文推断。</li>
+				<li><strong>数据驱动设计</strong>——所有游戏数值（单位 / 魔法 / 遗物 / 事件）经 xlsx → JSON 管道生成，代码零硬编码；扩展新资源仅改数据不动结构。</li>
+			</ul>
+
+			<h2>核心玩法特色</h2>
+			<ul class="project__principles">
+				<li><strong>阵营机制差异化</strong>——不同势力以独立的资源 / 单位 / 魔法循环对抗，引出风格迥异的玩法</li>
 				<li><strong>动态 AI 系统</strong>——AI 跟随玩家成长，从被动应对到主动反制</li>
-				<li><strong>星级系统</strong>——单位按近战 / 远程 × 普通 / 精英分四阶星位，构筑组合空间</li>
+				<li><strong>星级构筑系统</strong>——单位按近战 / 远程 × 普通 / 精英分四阶星位，构筑组合空间</li>
 				<li><strong>自然涌现的战术</strong>——2D 物理 + 单位碰撞体让阵型布置自带战术深度</li>
 			</ul>
 
-			<h2>设计与迭代</h2>
-			<p class="project__placeholder">设计迭代故事稍后补充</p>
+			<h2>开发阶段</h2>
+			<p>项目以 6 阶段路线推进，每阶段有明确退出标准：</p>
+			<ul class="project__principles">
+				<li><strong>P0 筹备</strong> ✓ ——项目工作流与协作规范建立</li>
+				<li><strong>P1 基础建设</strong> ✓ ——数据管道、数据加载器框架</li>
+				<li><strong>P2 核心原型</strong> ✓ ——一场战斗可完整运行；核心循环验证</li>
+				<li><strong>P3 全量构建</strong> → 进行中 ——所有核心系统可运行，数据驱动，跑通完整一局</li>
+				<li><strong>P4 打磨与扩展</strong> ——阵营扩展、真实美术替换、内测迭代</li>
+				<li><strong>P5 发行准备</strong> ——Steam 审核、愿望单积累、发行策略</li>
+				<li><strong>P6 发行后运营</strong> ——数据监控、热修复、内容更新路线</li>
+			</ul>
 
 			<h2>概念文档</h2>
 			<p>5 页项目概念文档节选（点击查看大图）：</p>
@@ -56,7 +94,7 @@ import Base from '../../layouts/Base.astro';
 			</div>
 
 			<h2>策划文档节选</h2>
-			<p>数据驱动的系统设计——单位与祝福/诅咒的 schema 化配置（点击查看大图）：</p>
+			<p>数据驱动的系统设计——单位与祝福 / 诅咒的 schema 化配置（点击查看大图）：</p>
 			<div class="project__docs">
 				<a href="/ash-aetharn-gdd-units.png" class="project__doc" target="_blank" rel="noopener">
 					<img src="/ash-aetharn-gdd-units.png" alt="单位数据表" loading="lazy" />
@@ -74,7 +112,7 @@ import Base from '../../layouts/Base.astro';
 					<img src="/ash-aetharn-github.png" alt="GitHub 分支结构" loading="lazy" />
 				</a>
 				<div class="project__engineering-note">
-					采用 <strong>feature-branch workflow</strong>：5 个 feature 分支并行（player-hud / blessing-curse-system / loot-architecture / event-system 等），主分支保持稳定，单分支平均 280+ commits。
+					采用 <strong>feature-branch workflow</strong>：5 个 feature 分支并行（player-hud / blessing-curse-system / loot-architecture / event-system 等），主分支保持稳定，单分支平均 280+ commits。配合 main / dev 双分支策略与按功能颗粒度的 commit 规范（feat / fix / data / doc / refactor / test / chore）。
 				</div>
 			</div>
 		</div>
