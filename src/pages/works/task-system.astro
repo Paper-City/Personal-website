@@ -1,0 +1,179 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="纸城 — 个人任务系统" current="作品">
+	<div class="project-bg" style="background-image: url('/missionsystem-dashboard.png'); background-position: center top; opacity: 0.18;"></div>
+
+	<article class="project">
+		<a href="/works" class="project__back">← 作品</a>
+
+		<header class="project__head">
+			<div class="eyebrow project__eyebrow">T01 · 2026 · 多端协同</div>
+			<h1 class="project__title">个人任务系统</h1>
+			<p class="project__subtitle">Claude Code × 飞书 × 妙搭 × GitHub</p>
+			<p class="project__intro">这是一套为自己开发的多端协同任务管理系统，把分散在 4 个并行项目（求职准备、校内作业、Ash of Aetharn、个人网站）里的全部任务统一管理。系统由 Claude Code 自动同步任务进度，飞书工作表作为单一数据源，妙搭 AI 在数据之上生成可视化仪表盘，GitHub 平行接收代码与进度推送。</p>
+			<p class="project__intro">它的真正意义不在"造了个 todo app"——而在于这是我对<strong>"AI 协同工作流"</strong>方法论的一次完整落地：让 Claude Code 做它擅长的（结构化任务自动化），让妙搭做它擅长的（飞书生态可视化），让数据层成为两者的桥梁。这套架构里藏着一条我在实践里总结的元规律——<strong>不要硬逼一个通用 AI 去做有专门 AI 的事</strong>。</p>
+		</header>
+
+		<div class="project__body">
+			<h2>我的工作</h2>
+			<p class="project__role">独立设计 · 架构决策 · AI 协同流程编排 · 多端数据集成</p>
+
+			<h2>系统架构</h2>
+			<p>整套系统分为四个角色：Claude Code 负责数据写入与代码同步，飞书工作表承担单一数据源，妙搭 AI 负责仪表盘的生成与迭代，GitHub 承接代码与进度的平行同步。</p>
+
+			<div class="task-arch">
+				<svg viewBox="0 0 720 660" width="100%" preserveAspectRatio="xMidYMid meet" role="img" aria-label="个人任务系统架构图">
+					<defs>
+						<marker id="arrow-bright" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+							<path d="M0,0 L0,6 L9,3 z" fill="#4D6FFF" />
+						</marker>
+						<marker id="arrow-muted" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+							<path d="M0,0 L0,6 L9,3 z" fill="#6B6B72" />
+						</marker>
+					</defs>
+
+					<!-- Claude Code (top) -->
+					<rect x="240" y="20" width="240" height="80" rx="6" fill="#0A0A0C" stroke="#4D6FFF" stroke-width="2" />
+					<text x="360" y="52" text-anchor="middle" fill="#FFFFFF" font-size="17" font-weight="700" font-family="DengXian, 等线, system-ui, sans-serif">Claude Code</text>
+					<text x="360" y="76" text-anchor="middle" fill="#C8C8CC" font-size="12">日常开发 · 任务自动同步</text>
+					<text x="490" y="55" fill="#6B6B72" font-size="11" font-style="italic">擅长：结构化任务自动化</text>
+
+					<!-- Arrow Code -> Feishu -->
+					<path d="M 320 100 L 220 195" stroke="#4D6FFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-bright)" />
+					<text x="200" y="155" fill="#C8C8CC" font-size="12">更新任务数据</text>
+
+					<!-- Arrow Code -> GitHub -->
+					<path d="M 400 100 L 500 195" stroke="#4D6FFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-bright)" />
+					<text x="430" y="155" fill="#C8C8CC" font-size="12">推送代码 + 进度</text>
+
+					<!-- Feishu Sheet (middle-left) -->
+					<rect x="100" y="205" width="240" height="90" rx="6" fill="#0A0A0C" stroke="#4D6FFF" stroke-width="2" />
+					<text x="220" y="234" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="700">飞书工作表</text>
+					<text x="220" y="256" text-anchor="middle" fill="#C8C8CC" font-size="12">目标与规划 + 项目细表</text>
+					<text x="220" y="278" text-anchor="middle" fill="#6B6B72" font-size="11" font-style="italic">single source of truth</text>
+
+					<!-- GitHub (middle-right) -->
+					<rect x="400" y="205" width="220" height="90" rx="6" fill="#0A0A0C" stroke="#4D6FFF" stroke-width="2" />
+					<text x="510" y="234" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="700">GitHub</text>
+					<text x="510" y="256" text-anchor="middle" fill="#C8C8CC" font-size="12">代码历史 + 进度同步</text>
+					<text x="510" y="278" text-anchor="middle" fill="#6B6B72" font-size="11" font-style="italic">main / dev / feat/*</text>
+
+					<!-- Arrow Feishu -> 妙搭 -->
+					<path d="M 220 295 L 220 405" stroke="#4D6FFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-bright)" />
+					<text x="232" y="355" fill="#C8C8CC" font-size="12">数据源</text>
+
+					<!-- 妙搭 (middle-left lower) -->
+					<rect x="100" y="415" width="240" height="90" rx="6" fill="#0A0A0C" stroke="#4D6FFF" stroke-width="2" />
+					<text x="220" y="444" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="700">妙搭 AI</text>
+					<text x="220" y="466" text-anchor="middle" fill="#C8C8CC" font-size="12">飞书原生 AI</text>
+					<text x="220" y="488" text-anchor="middle" fill="#6B6B72" font-size="11" font-style="italic">自然语言 → App</text>
+					<text x="350" y="450" fill="#6B6B72" font-size="11" font-style="italic">擅长：飞书生态可视化</text>
+
+					<!-- Arrow 妙搭 -> Dashboard -->
+					<path d="M 270 505 L 360 565" stroke="#4D6FFF" stroke-width="1.5" fill="none" marker-end="url(#arrow-bright)" />
+					<text x="305" y="545" fill="#C8C8CC" font-size="12">生成</text>
+
+					<!-- Dashboard (bottom, wider) -->
+					<rect x="220" y="575" width="320" height="70" rx="6" fill="#0A0A0C" stroke="#4D6FFF" stroke-width="2" />
+					<text x="380" y="604" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="700">个人任务仪表盘 App</text>
+					<text x="380" y="626" text-anchor="middle" fill="#C8C8CC" font-size="12">项目卡片 · 今日 · 逾期 · 进度饼图</text>
+
+					<!-- Dashed write-back: Dashboard -> Feishu Sheet (showing 双向交互) -->
+					<path d="M 220 605 Q 70 540 70 250 Q 70 230 100 230" stroke="#6B6B72" stroke-width="1" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow-muted)" />
+					<text x="20" y="430" fill="#6B6B72" font-size="11" transform="rotate(-90, 20, 430)">状态写回（仪表盘可改任务状态）</text>
+				</svg>
+			</div>
+
+			<h2>关键设计决策</h2>
+			<ul class="project__principles">
+				<li><strong>不让 Claude 直接造飞书 App</strong>——我最初的"懒人方案"是让 Claude Code 直接在飞书内搭 App，结果发现它的能力被飞书生态特性卡住，效果远不如飞书自带的妙搭 / Ally。这二者是**为飞书生态专门训练过的 AI**，在自己的领域是专业户。**真正聪明的做法不是逼通用 AI 干所有事，而是让每种 AI 干它擅长的事，用数据层做桥梁**。</li>
+				<li><strong>飞书工作表作为单一数据源</strong>——任务数据只有一个权威位置。Claude Code 写它、妙搭 AI 读它、仪表盘改它，所有变更最终回到这一张表。避免了多端不一致的常见陷阱。</li>
+				<li><strong>GitHub 与飞书并行同步</strong>——任务进度不只推到飞书仪表盘，也推到 GitHub 仓库（提交描述 + 分支推进），让两个完全不同的系统反映同一份现实。</li>
+				<li><strong>仪表盘可交互</strong>——不是只读视图。任务状态可以从仪表盘直接修改，写回工作表，再传导到 Claude Code 的下一次工作。整个系统形成闭环。</li>
+			</ul>
+
+			<h2>仪表盘 UI</h2>
+			<p>仪表盘是系统的最终呈现层——按项目分组的进度卡片、今日待办、全部待办、逾期任务、当日完成饼图，全部由妙搭 AI 基于工作表数据自动生成（点击查看大图）：</p>
+			<div class="project__docs">
+				<a href="/missionsystem-dashboard.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-dashboard.png" alt="任务仪表盘主视图" loading="lazy" />
+					<span class="project__doc-cap">仪表盘主视图：项目进度 · 待办 · 逾期 · 当日饼图</span>
+				</a>
+				<a href="/missionsystem-status-dropdown.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-status-dropdown.png" alt="仪表盘可交互修改任务状态" loading="lazy" />
+					<span class="project__doc-cap">仪表盘可直接改任务状态（未开始 / 进行中 / 已完成 / 被挂起 / 已弃置）</span>
+				</a>
+			</div>
+
+			<h2>数据后端：飞书工作表</h2>
+			<p>主表"目标与规划"承载项目级关系，每个项目挂载一张细表，记录任务级数据。这种"主表 + 关联细表"的结构让仪表盘可以按项目聚合、按任务展开（点击查看大图）：</p>
+			<div class="project__docs">
+				<a href="/missionsystem-sheet-master.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-sheet-master.png" alt="目标与规划主表" loading="lazy" />
+					<span class="project__doc-cap">主表"目标与规划"：项目 · 优先级 · 状态 · 项目链接</span>
+				</a>
+				<a href="/missionsystem-sheet-detail.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-sheet-detail.png" alt="Ash of Aetharn 项目细表" loading="lazy" />
+					<span class="project__doc-cap">Ash of Aetharn 项目细表：任务 · 截止 · 状态 · 完成日期</span>
+				</a>
+			</div>
+
+			<h2>构建过程：自然语言 → App</h2>
+			<p>仪表盘 App 不是手写的，是通过妙搭 AI 用自然语言描述需求生成的。从最初的功能规格、到 bug 修复、到细节迭代，全程用对话推进——这是 AI 协同工作流在"消费端"的应用（点击查看大图）：</p>
+			<div class="project__docs">
+				<a href="/missionsystem-build-spec.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-build-spec.png" alt="向妙搭描述仪表盘需求" loading="lazy" />
+					<span class="project__doc-cap">最初向妙搭描述需求（4 个功能区的规格说明）</span>
+				</a>
+				<a href="/missionsystem-build-bugfix.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-build-bugfix.png" alt="发现并修复截止日期显示偏差" loading="lazy" />
+					<span class="project__doc-cap">迭代过程：发现 4-28 / 4-27 日期偏差，AI 自动定位并修复</span>
+				</a>
+			</div>
+
+			<h2>多端同步：GitHub</h2>
+			<p>除了飞书仪表盘，任务进度同步推送到 GitHub——Ancient War 项目的 5 个 feature 分支并行推进，每个分支平均 280+ commits，构成代码层的进度证据（点击查看大图）：</p>
+			<div class="project__docs">
+				<a href="/missionsystem-github.png" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-github.png" alt="GitHub 多分支并行进度" loading="lazy" />
+					<span class="project__doc-cap">GitHub Branches：5 个 feature 分支并行 + main / dev 双分支策略</span>
+				</a>
+			</div>
+
+			<h2>实际使用数据</h2>
+			<p>截至当前，这套系统正在管理我 4 个并行项目，共 100+ 个任务，完成度数据：</p>
+			<ul class="project__principles">
+				<li><strong>Ash of Aetharn</strong>：71 个任务，已完成 67 个（94%）</li>
+				<li><strong>求职准备</strong>：14 个任务，已完成 8 个（57%）</li>
+				<li><strong>校内作业</strong>：1 个任务（在做中）</li>
+				<li>逾期警告、今日聚焦、跨项目进度对照——日常使用中实际驱动着我的开发节奏</li>
+			</ul>
+
+			<h2>复盘：从这个系统学到的</h2>
+			<p>这个项目本身规模不大（"造个 todo 仪表盘"），但作为我"AI 协同工作流"方法论的第一次完整落地，它带来了几个超出工具本身的认知：</p>
+			<ul class="project__principles">
+				<li><strong>能力分工本身是工作流的一部分</strong>——AI 协同不是"找一个全能 AI"，而是"识别每个 AI 的舒适区，再用数据层把它们串起来"。这条规律可以推广到任何复杂的人 × AI 协作场景，包括游戏开发。</li>
+				<li><strong>数据层解耦是降低复杂度的关键</strong>——只要保持工作表的 schema 稳定，上游（Code）和下游（妙搭）就可以独立演化。这是软件工程的老规律，但在 AI 协同里同样有效，甚至更重要。</li>
+				<li><strong>"低代码 / 无代码 + AI"路线在飞书生态里被严重低估</strong>——妙搭的能力上限我还没探到，但它的"自然语言 → 可用 App"已经能解决我 80% 的日常需求。这条路对独立开发者和小团队是真正的杠杆。</li>
+				<li><strong>把工作流本身当成可演化的产品</strong>——这个系统不是一次性搭好的，是边用边迭代的。每次发现痛点（日期偏差、滚动条缺失、状态不可改），就向妙搭说一句话改一次。这种"工作流即产品"的姿态，本身就是 AI 时代给独立开发者的新红利。</li>
+			</ul>
+		</div>
+
+		<footer class="project__foot">
+			<a href="/works" class="project__back">← 返回作品列表</a>
+		</footer>
+	</article>
+</Base>
+
+<style>
+	.task-arch {
+		margin: var(--s-5) 0 var(--s-6);
+		padding: var(--s-5);
+		background: rgba(77, 111, 255, 0.03);
+		border: 1px solid var(--line);
+		border-radius: 6px;
+	}
+	.task-arch svg { max-width: 720px; }
+</style>

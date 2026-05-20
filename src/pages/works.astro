@@ -71,6 +71,17 @@ const projects = [
 ];
 
 const placeholders: { area: string; fill: string; label: string }[] = [];
+
+const tools = [
+	{
+		num: 'T01',
+		title: '个人任务系统',
+		subtitle: 'Claude Code × 飞书 × 妙搭 × GitHub',
+		year: '2026 · 多端协同',
+		cover: '/missionsystem-dashboard.png',
+		href: '/works/task-system',
+	},
+];
 ---
 
 <Base title="纸城 — 作品" current="作品">
@@ -101,6 +112,26 @@ const placeholders: { area: string; fill: string; label: string }[] = [];
 				</div>
 			</div>
 		))}
+	</section>
+
+	<section class="tools-section fade-up fade-up--5">
+		<div class="tools-section__head">
+			<span class="eyebrow">工具 / Tools</span>
+			<h2 class="tools-section__title">支撑我开发的 AI 协同工作流系统</h2>
+		</div>
+		<div class="tools-grid">
+			{tools.map((t) => (
+				<a href={t.href} class="tool-card">
+					{t.cover && <img src={t.cover} alt={t.title} loading="lazy" class="tool-card__cover" />}
+					<div class="tool-card__overlay">
+						<div class="tool-card__num">{t.num}</div>
+						<div class="tool-card__title">{t.title}</div>
+						<div class="tool-card__sub">{t.subtitle}</div>
+						<div class="tool-card__year">{t.year}</div>
+					</div>
+				</a>
+			))}
+		</div>
 	</section>
 </Base>
 
@@ -269,5 +300,108 @@ const placeholders: { area: string; fill: string; label: string }[] = [];
 				"p2";
 			gap: 8px;
 		}
+	}
+
+	/* ---------- Tools Section ---------- */
+	.tools-section {
+		margin-top: var(--s-9);
+		padding-top: var(--s-7);
+		border-top: 1px solid var(--line);
+	}
+	.tools-section__head {
+		margin-bottom: var(--s-5);
+	}
+	.tools-section__head .eyebrow {
+		font-size: 13px;
+		display: block;
+		margin-bottom: var(--s-3);
+	}
+	.tools-section__title {
+		font-family: var(--font-display);
+		font-size: clamp(20px, 2vw, 26px);
+		font-weight: 700;
+		color: var(--ink);
+		letter-spacing: -0.01em;
+	}
+	.tools-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+	.tool-card {
+		position: relative;
+		display: block;
+		overflow: hidden;
+		border: 1px solid var(--line);
+		background: var(--bg-soft);
+		min-height: 240px;
+		text-decoration: none;
+		color: var(--ink);
+		transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
+		cursor: pointer;
+	}
+	.tool-card:hover {
+		border-color: var(--accent-bright);
+		transform: translateY(-4px);
+	}
+	.tool-card__cover {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top left;
+		filter: saturate(0.7) contrast(1.05) brightness(0.85);
+		transition: filter var(--duration) var(--ease), transform 600ms var(--ease-out);
+	}
+	.tool-card:hover .tool-card__cover {
+		filter: saturate(0.9) contrast(1.1) brightness(0.95);
+		transform: scale(1.02);
+	}
+	.tool-card::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.85) 100%);
+		z-index: 1;
+		pointer-events: none;
+	}
+	.tool-card__overlay {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: var(--s-6);
+		z-index: 2;
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+	.tool-card__num {
+		font-family: var(--font-mono);
+		font-size: 11px;
+		letter-spacing: 0.22em;
+		color: var(--accent-bright);
+		margin-bottom: var(--s-2);
+	}
+	.tool-card__title {
+		font-family: var(--font-display);
+		font-size: clamp(22px, 2.4vw, 30px);
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.01em;
+	}
+	.tool-card__sub {
+		margin-top: var(--s-2);
+		font-size: 13px;
+		color: var(--ink-secondary);
+	}
+	.tool-card__year {
+		margin-top: var(--s-2);
+		font-family: var(--font-mono);
+		font-size: 10px;
+		letter-spacing: 0.2em;
+		color: var(--ink-muted);
+		text-transform: uppercase;
 	}
 </style>
