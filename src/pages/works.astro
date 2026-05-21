@@ -92,11 +92,11 @@ const tools = [
 	</section>
 
 	<section class="part-section fade-up fade-up--2">
-		<div class="part-header">
-			<div class="part-header__num">PART I</div>
-			<h2 class="part-header__title">AI 时代中的我</h2>
-			<p class="part-header__desc">把 AI 融入我自己的开发流程——工具、协同模式、可复用的方法论。</p>
-		</div>
+		<h2 class="part-header">
+			<span class="part-header__num">PART I</span>
+			<span class="part-header__sep">─</span>
+			<span class="part-header__name">AI 时代中的我</span>
+		</h2>
 		<div class="tools-grid">
 			{tools.map((t) => (
 				<a href={t.href} class="tool-card">
@@ -113,11 +113,11 @@ const tools = [
 	</section>
 
 	<section class="part-section fade-up fade-up--3">
-		<div class="part-header">
-			<div class="part-header__num">PART II</div>
-			<h2 class="part-header__title">我的游戏设计之道</h2>
-			<p class="part-header__desc">桌游、RTS、Roguelite、平台跳跃、生存——我对游戏设计的多向探索。</p>
-		</div>
+		<h2 class="part-header">
+			<span class="part-header__num">PART II</span>
+			<span class="part-header__sep">─</span>
+			<span class="part-header__name">我的游戏设计之道</span>
+		</h2>
 		<section class="album">
 			{projects.map((p) => (
 				<a href={p.href} class={`album__tile area-${p.area} ${p.cover ? '' : 'album__tile--solid'} ${p.fill ? `fill-${p.fill}` : ''}`}>
@@ -318,33 +318,33 @@ const tools = [
 		margin-top: var(--s-5);
 	}
 	.part-header {
+		display: flex;
+		align-items: baseline;
+		gap: var(--s-3);
+		flex-wrap: wrap;
 		margin-bottom: var(--s-5);
 		padding-bottom: var(--s-4);
 		border-bottom: 1px solid var(--line);
+		color: var(--accent-bright);
 	}
 	.part-header__num {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 13px;
 		letter-spacing: 0.3em;
-		color: var(--accent-bright);
-		margin-bottom: var(--s-3);
 		text-transform: uppercase;
+		font-weight: 500;
 	}
-	.part-header__title {
+	.part-header__sep {
+		font-family: var(--font-mono);
+		font-size: 14px;
+		opacity: 0.55;
+	}
+	.part-header__name {
 		font-family: var(--font-display);
-		font-size: clamp(26px, 3.2vw, 36px);
+		font-size: clamp(22px, 2.6vw, 30px);
 		font-weight: 700;
-		color: var(--ink);
-		letter-spacing: -0.02em;
-		margin-bottom: var(--s-3);
+		letter-spacing: -0.01em;
 		line-height: 1.15;
-	}
-	.part-header__desc {
-		font-family: var(--font-display);
-		font-size: 15px;
-		color: var(--ink-secondary);
-		max-width: 640px;
-		line-height: 1.65;
 	}
 	.tools-grid {
 		display: grid;
