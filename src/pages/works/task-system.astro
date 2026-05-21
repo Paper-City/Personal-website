@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 ---
 
 <Base title="纸城 — 个人任务系统" current="作品">
-	<div class="project-bg" style="background-image: url('/missionsystem-dashboard.png'); background-position: center top; opacity: 0.18;"></div>
+	<div class="project-bg" style="background-image: url('/missionsystem-dashboard.webp'); background-position: center top; opacity: 0.18;"></div>
 
 	<article class="project">
 		<a href="/works" class="project__back">← 作品</a>
@@ -97,12 +97,12 @@ import Base from '../../layouts/Base.astro';
 			<h2>仪表盘 UI</h2>
 			<p>仪表盘是系统的最终呈现层——按项目分组的进度卡片、今日待办、全部待办、逾期任务、当日完成饼图，全部由妙搭 AI 基于工作表数据自动生成（点击查看大图）：</p>
 			<div class="project__docs">
-				<a href="/missionsystem-dashboard.png" class="project__doc" target="_blank" rel="noopener">
-					<img src="/missionsystem-dashboard.png" alt="任务仪表盘主视图" loading="lazy" />
+				<a href="/missionsystem-dashboard.webp" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-dashboard.webp" alt="任务仪表盘主视图" loading="lazy" />
 					<span class="project__doc-cap">仪表盘主视图：项目进度 · 待办 · 逾期 · 当日饼图</span>
 				</a>
-				<a href="/missionsystem-status-dropdown.png" class="project__doc" target="_blank" rel="noopener">
-					<img src="/missionsystem-status-dropdown.png" alt="仪表盘可交互修改任务状态" loading="lazy" />
+				<a href="/missionsystem-status-dropdown.webp" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-status-dropdown.webp" alt="仪表盘可交互修改任务状态" loading="lazy" />
 					<span class="project__doc-cap">仪表盘可直接改任务状态（未开始 / 进行中 / 已完成 / 被挂起 / 已弃置）</span>
 				</a>
 			</div>
@@ -110,12 +110,12 @@ import Base from '../../layouts/Base.astro';
 			<h2>数据后端：飞书工作表</h2>
 			<p>主表"目标与规划"承载项目级关系，每个项目挂载一张细表，记录任务级数据。这种"主表 + 关联细表"的结构让仪表盘可以按项目聚合、按任务展开（点击查看大图）：</p>
 			<div class="project__docs">
-				<a href="/missionsystem-sheet-master.png" class="project__doc" target="_blank" rel="noopener">
-					<img src="/missionsystem-sheet-master.png" alt="目标与规划主表" loading="lazy" />
+				<a href="/missionsystem-sheet-master.webp" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-sheet-master.webp" alt="目标与规划主表" loading="lazy" />
 					<span class="project__doc-cap">主表"目标与规划"：项目 · 优先级 · 状态 · 项目链接</span>
 				</a>
-				<a href="/missionsystem-sheet-detail.png" class="project__doc" target="_blank" rel="noopener">
-					<img src="/missionsystem-sheet-detail.png" alt="Ash of Aetharn 项目细表" loading="lazy" />
+				<a href="/missionsystem-sheet-detail.webp" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-sheet-detail.webp" alt="Ash of Aetharn 项目细表" loading="lazy" />
 					<span class="project__doc-cap">Ash of Aetharn 项目细表：任务 · 截止 · 状态 · 完成日期</span>
 				</a>
 			</div>
@@ -123,12 +123,12 @@ import Base from '../../layouts/Base.astro';
 			<h2>构建过程：自然语言 → App</h2>
 			<p>仪表盘 App 不是手写的，是通过妙搭 AI 用自然语言描述需求生成的。从最初的功能规格、到 bug 修复、到细节迭代，全程用对话推进——这是 AI 协同工作流在"消费端"的应用（点击查看大图）：</p>
 			<div class="project__docs">
-				<a href="/missionsystem-build-spec.png" class="project__doc" target="_blank" rel="noopener">
-					<img src="/missionsystem-build-spec.png" alt="向妙搭描述仪表盘需求" loading="lazy" />
+				<a href="/missionsystem-build-spec.webp" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-build-spec.webp" alt="向妙搭描述仪表盘需求" loading="lazy" />
 					<span class="project__doc-cap">最初向妙搭描述需求（4 个功能区的规格说明）</span>
 				</a>
-				<a href="/missionsystem-build-bugfix.png" class="project__doc" target="_blank" rel="noopener">
-					<img src="/missionsystem-build-bugfix.png" alt="发现并修复截止日期显示偏差" loading="lazy" />
+				<a href="/missionsystem-build-bugfix.webp" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-build-bugfix.webp" alt="发现并修复截止日期显示偏差" loading="lazy" />
 					<span class="project__doc-cap">迭代过程：发现 4-28 / 4-27 日期偏差，AI 自动定位并修复</span>
 				</a>
 			</div>
@@ -136,8 +136,8 @@ import Base from '../../layouts/Base.astro';
 			<h2>多端同步：GitHub</h2>
 			<p>除了飞书仪表盘，任务进度同步推送到 GitHub——Ancient War 项目的 5 个 feature 分支并行推进，每个分支平均 280+ commits，构成代码层的进度证据（点击查看大图）：</p>
 			<div class="project__docs">
-				<a href="/missionsystem-github.png" class="project__doc" target="_blank" rel="noopener">
-					<img src="/missionsystem-github.png" alt="GitHub 多分支并行进度" loading="lazy" />
+				<a href="/missionsystem-github.webp" class="project__doc" target="_blank" rel="noopener">
+					<img src="/missionsystem-github.webp" alt="GitHub 多分支并行进度" loading="lazy" />
 					<span class="project__doc-cap">GitHub Branches：5 个 feature 分支并行 + main / dev 双分支策略</span>
 				</a>
 			</div>
