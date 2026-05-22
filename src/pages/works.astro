@@ -13,6 +13,7 @@ const projects = [
 		cover: '/ash.webp',
 		area: 'ash',
 		href: '/works/ash-of-aetharn',
+		delay: 0,    // row 1, col 1
 	},
 	{
 		num: 'P04',
@@ -22,6 +23,7 @@ const projects = [
 		cover: '/boat-wright-2.webp',
 		area: 'boat',
 		href: '/works/boatwright',
+		delay: 0,    // row 3, col 1
 	},
 	{
 		num: 'P05',
@@ -31,6 +33,7 @@ const projects = [
 		cover: '/miner.webp',
 		area: 'sf',
 		href: '/works/dwarf-miner',
+		delay: 160,  // row 1, col 3
 	},
 	{
 		num: 'P06',
@@ -40,6 +43,7 @@ const projects = [
 		cover: '/midnight.webp',
 		area: 'p1',
 		href: '/works/12-oclock',
+		delay: 0,    // row 5, col 1
 	},
 	{
 		num: 'P07',
@@ -49,6 +53,7 @@ const projects = [
 		cover: '/debug.webp',
 		area: 'p07',
 		href: '/works/debug-my-life',
+		delay: 160,  // row 2, col 3
 	},
 	{
 		num: 'P02',
@@ -58,6 +63,7 @@ const projects = [
 		cover: '/cover-outside-the-blue.webp',
 		area: 'otb',
 		href: '/works/outside-the-blue',
+		delay: 80,   // row 1, col 2
 	},
 	{
 		num: 'P01',
@@ -67,6 +73,7 @@ const projects = [
 		cover: '/slow-and-fast.jpg',
 		area: 'p2',
 		href: '/works/slow-and-fast',
+		delay: 160,  // row 4, col 3
 	},
 ];
 
@@ -99,7 +106,7 @@ const tools = [
 		</h2>
 		<div class="tools-grid">
 			{tools.map((t) => (
-				<a href={t.href} class="tool-card">
+				<a href={t.href} class="tool-card stagger-pop" style="--pop-delay: 0ms">
 					{t.cover && <img src={t.cover} alt={t.title} loading="lazy" class="tool-card__cover" />}
 					<div class="tool-card__overlay">
 						<div class="tool-card__num">{t.num}</div>
@@ -120,7 +127,7 @@ const tools = [
 		</h2>
 		<section class="album">
 			{projects.map((p) => (
-				<a href={p.href} class={`album__tile area-${p.area} ${p.cover ? '' : 'album__tile--solid'} ${p.fill ? `fill-${p.fill}` : ''}`}>
+				<a href={p.href} class={`album__tile stagger-pop area-${p.area} ${p.cover ? '' : 'album__tile--solid'} ${p.fill ? `fill-${p.fill}` : ''}`} style={`--pop-delay: ${p.delay}ms`}>
 					{p.cover && <img src={p.cover} alt={p.title} loading="lazy" />}
 					<div class="album__overlay">
 						<div class="album__num">{p.num}</div>
@@ -142,6 +149,25 @@ const tools = [
 		</section>
 	</section>
 </Base>
+
+<script>
+	// Trigger pop animation when each tile enters the viewport.
+	const io = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				const el = entry.target as HTMLElement;
+				el.classList.add('in-view');
+				el.addEventListener('animationend', () => {
+					el.classList.add('popped');
+					el.classList.remove('in-view');
+				}, { once: true });
+				io.unobserve(el);
+			}
+		});
+	}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+	document.querySelectorAll('.stagger-pop').forEach((el) => io.observe(el));
+</script>
 
 <style>
 	.works-hero {

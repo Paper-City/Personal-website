@@ -499,6 +499,27 @@ p + p { margin-top: var(--s-4); }
 }
 
 /* ---------- Animation utilities ---------- */
+
+/* Stagger pop-in: cards start hidden + scaled down, then bounce into place
+   when their IntersectionObserver fires .in-view. After the animation ends,
+   .popped is set and .in-view is removed so :hover transforms can take over. */
+.stagger-pop:not(.popped) {
+  opacity: 0;
+}
+.stagger-pop.in-view {
+  animation: tile-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--pop-delay, 0ms) forwards;
+}
+@keyframes tile-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 .fade-up {
   animation: fadeUp var(--duration-slow) var(--ease-out) both;
 }
