@@ -355,7 +355,7 @@ p + p { margin-top: var(--s-4); }
   pointer-events: none;
   z-index: 2;
   opacity: 0;
-  animation: tile-flash 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--fall-delay) both;
+  animation: tile-flash 0.9s linear var(--fall-delay) both;
 }
 
 @keyframes tile-fall {
@@ -373,7 +373,6 @@ p + p { margin-top: var(--s-4); }
 }
 @keyframes tile-flash {
   0%   { opacity: 1; }
-  60%  { opacity: 0.55; }
   100% { opacity: 0; }
 }
 
