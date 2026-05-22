@@ -355,7 +355,7 @@ p + p { margin-top: var(--s-4); }
   pointer-events: none;
   z-index: 2;
   opacity: 0;
-  animation: tile-flash 0.9s linear var(--fall-delay) both;
+  animation: tile-flash 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--fall-delay) both;
 }
 
 @keyframes tile-fall {
@@ -379,7 +379,7 @@ p + p { margin-top: var(--s-4); }
 /* Personal portrait — central anchor, kept at original position */
 .tile--portrait {
   --rotate: -3deg;
-  --fall-delay: 0ms;
+  --fall-delay: 560ms;
   top: 22%;
   right: 22%;
   width: 28%;
@@ -392,7 +392,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--slowfast {
   --rotate: 11deg;
-  --fall-delay: 160ms;
+  --fall-delay: 160ms; /* z-index 7 */
   top: 60%;
   right: 30%;
   width: 22%;
@@ -403,7 +403,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--ash {
   --rotate: 9deg;
-  --fall-delay: 480ms;
+  --fall-delay: 240ms; /* z-index 8 */
   top: 2%;
   right: 10%;
   width: 26%;
@@ -413,7 +413,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--debug {
   --rotate: -7deg;
-  --fall-delay: 560ms;
+  --fall-delay: 0ms; /* z-index 6 — bottom layer, falls first */
   top: 10%;
   right: -2%;
   width: 22%;
@@ -423,7 +423,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--boat {
   --rotate: 8deg;
-  --fall-delay: 400ms;
+  --fall-delay: 480ms; /* z-index 9 */
   top: 36%;
   right: -2%;
   width: 26%;
@@ -433,7 +433,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--miner {
   --rotate: 13deg;
-  --fall-delay: 80ms;
+  --fall-delay: 400ms; /* z-index 9 */
   top: 44%;
   right: 38%;
   width: 22%;
@@ -443,7 +443,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--midnight {
   --rotate: -9deg;
-  --fall-delay: 320ms;
+  --fall-delay: 320ms; /* z-index 8 */
   top: 56%;
   right: 8%;
   width: 26%;
@@ -453,7 +453,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--otb {
   --rotate: -12deg;
-  --fall-delay: 240ms;
+  --fall-delay: 80ms; /* z-index 6 */
   top: 6%;
   right: 36%;
   width: 22%;
