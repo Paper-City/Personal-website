@@ -13,5 +13,6 @@ export const NAV_ITEMS = [
 
 export const SOCIAL = {
 	github: 'https://github.com/Paper-City',
-	email: 'mailto:2242321136@qq.com',
+	email: 'mailto:papercitystudio@163.com',
+	resume: '/huang-tingyu-resume.pdf',
 };
