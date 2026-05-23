@@ -330,12 +330,13 @@ p + p { margin-top: var(--s-4); }
 .tile {
   --rotate: 0deg;
   --fall-delay: 0ms;
+  --fall-duration: 1.3s;
   position: absolute;
   background: var(--surface);
   overflow: hidden;
   box-shadow: 0 30px 80px rgba(0,0,0,0.65);
   transform: rotate(var(--rotate));
-  animation: tile-fall 1.3s cubic-bezier(0.22, 1, 0.36, 1) var(--fall-delay) both;
+  animation: tile-fall var(--fall-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--fall-delay) both;
   will-change: transform, opacity;
 }
 .tile img { width: 100%; height: 100%; object-fit: cover; }
@@ -363,7 +364,8 @@ p + p { margin-top: var(--s-4); }
 /* Personal portrait — central anchor, kept at original position */
 .tile--portrait {
   --rotate: -3deg;
-  --fall-delay: 1210ms;
+  --fall-delay: 1170ms;
+  --fall-duration: 0.9s;
   top: 22%;
   right: 22%;
   width: 28%;
@@ -376,7 +378,8 @@ p + p { margin-top: var(--s-4); }
 
 .tile--slowfast {
   --rotate: 11deg;
-  --fall-delay: 560ms; /* z-index 7 */
+  --fall-delay: 640ms; /* z-index 7 */
+  --fall-duration: 1.2s;
   top: 60%;
   right: 30%;
   width: 22%;
@@ -387,7 +390,8 @@ p + p { margin-top: var(--s-4); }
 
 .tile--ash {
   --rotate: 9deg;
-  --fall-delay: 690ms; /* z-index 8 */
+  --fall-delay: 780ms; /* z-index 8 */
+  --fall-duration: 1.1s;
   top: 2%;
   right: 10%;
   width: 26%;
@@ -398,6 +402,7 @@ p + p { margin-top: var(--s-4); }
 .tile--debug {
   --rotate: -7deg;
   --fall-delay: 300ms; /* z-index 6 — bottom layer, falls first */
+  --fall-duration: 1.3s;
   top: 10%;
   right: -2%;
   width: 22%;
@@ -407,7 +412,8 @@ p + p { margin-top: var(--s-4); }
 
 .tile--boat {
   --rotate: 8deg;
-  --fall-delay: 1080ms; /* z-index 9 */
+  --fall-delay: 1090ms; /* z-index 9 */
+  --fall-duration: 0.95s;
   top: 36%;
   right: -2%;
   width: 26%;
@@ -417,7 +423,8 @@ p + p { margin-top: var(--s-4); }
 
 .tile--miner {
   --rotate: 13deg;
-  --fall-delay: 950ms; /* z-index 9 */
+  --fall-delay: 1000ms; /* z-index 9 */
+  --fall-duration: 1.0s;
   top: 44%;
   right: 38%;
   width: 22%;
@@ -427,7 +434,8 @@ p + p { margin-top: var(--s-4); }
 
 .tile--midnight {
   --rotate: -9deg;
-  --fall-delay: 820ms; /* z-index 8 */
+  --fall-delay: 900ms; /* z-index 8 */
+  --fall-duration: 1.05s;
   top: 56%;
   right: 8%;
   width: 26%;
@@ -437,7 +445,8 @@ p + p { margin-top: var(--s-4); }
 
 .tile--otb {
   --rotate: -12deg;
-  --fall-delay: 430ms; /* z-index 6 */
+  --fall-delay: 480ms; /* z-index 6 */
+  --fall-duration: 1.25s;
   top: 6%;
   right: 36%;
   width: 22%;
