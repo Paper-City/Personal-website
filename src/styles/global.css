@@ -364,7 +364,7 @@ p + p { margin-top: var(--s-4); }
 /* Personal portrait — central anchor, kept at original position */
 .tile--portrait {
   --rotate: -3deg;
-  --fall-delay: 1070ms;
+  --fall-delay: 1000ms;
   --fall-duration: 0.9s;
   top: 22%;
   right: 22%;
@@ -378,7 +378,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--slowfast {
   --rotate: 11deg;
-  --fall-delay: 520ms; /* z-index 7 */
+  --fall-delay: 500ms; /* z-index 7 */
   --fall-duration: 1.2s;
   top: 60%;
   right: 30%;
@@ -390,7 +390,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--ash {
   --rotate: 9deg;
-  --fall-delay: 630ms; /* z-index 8 */
+  --fall-delay: 600ms; /* z-index 8 */
   --fall-duration: 1.1s;
   top: 2%;
   right: 10%;
@@ -412,7 +412,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--boat {
   --rotate: 8deg;
-  --fall-delay: 960ms; /* z-index 9 */
+  --fall-delay: 900ms; /* z-index 9 */
   --fall-duration: 0.95s;
   top: 36%;
   right: -2%;
@@ -423,7 +423,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--miner {
   --rotate: 13deg;
-  --fall-delay: 850ms; /* z-index 9 */
+  --fall-delay: 800ms; /* z-index 9 */
   --fall-duration: 1.0s;
   top: 44%;
   right: 38%;
@@ -434,7 +434,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--midnight {
   --rotate: -9deg;
-  --fall-delay: 740ms; /* z-index 8 */
+  --fall-delay: 700ms; /* z-index 8 */
   --fall-duration: 1.05s;
   top: 56%;
   right: 8%;
@@ -445,7 +445,7 @@ p + p { margin-top: var(--s-4); }
 
 .tile--otb {
   --rotate: -12deg;
-  --fall-delay: 410ms; /* z-index 6 */
+  --fall-delay: 400ms; /* z-index 6 */
   --fall-duration: 1.25s;
   top: 6%;
   right: 36%;
