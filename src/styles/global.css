@@ -504,7 +504,7 @@ p + p { margin-top: var(--s-4); }
    Pure CSS — runs without JS so cards never get stuck invisible.
    `both` keeps the 0% state during animation-delay so cards stay hidden until their turn. */
 .stagger-pop {
-  animation: tile-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) var(--pop-delay, 0ms) backwards;
+  animation: tile-pop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) var(--pop-delay, 0ms) backwards;
 }
 @keyframes tile-pop {
   0% {
