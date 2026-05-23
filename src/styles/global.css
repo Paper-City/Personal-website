@@ -534,6 +534,23 @@ p + p { margin-top: var(--s-4); }
   }
 }
 
+/* Soft fade + small lift — used on contact blocks for a calmer entry
+   than the bouncy pop or the slide. Same timing / curve discipline as
+   the other stagger utilities. */
+.stagger-fade {
+  animation: fade-lift 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--pop-delay, 0ms) backwards;
+}
+@keyframes fade-lift {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .fade-up {
   animation: fadeUp var(--duration-slow) var(--ease-out) both;
 }
