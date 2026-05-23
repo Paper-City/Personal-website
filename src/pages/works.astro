@@ -106,7 +106,7 @@ const tools = [
 		</h2>
 		<div class="tools-grid">
 			{tools.map((t) => (
-				<a href={t.href} class="tool-card stagger-pop" style="--pop-delay: 0ms">
+				<a href={t.href} class="tool-card stagger-pop" style="--pop-delay: 50ms">
 					{t.cover && <img src={t.cover} alt={t.title} loading="lazy" class="tool-card__cover" />}
 					<div class="tool-card__overlay">
 						<div class="tool-card__num">{t.num}</div>
