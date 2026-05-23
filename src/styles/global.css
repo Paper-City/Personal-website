@@ -517,6 +517,23 @@ p + p { margin-top: var(--s-4); }
   }
 }
 
+/* Slide in from left — used on note list items. ease-out-expo so it
+   starts fast and decelerates smoothly into place. backwards keeps items
+   hidden during their delay window. */
+.stagger-slide-left {
+  animation: slide-in-left 0.9s cubic-bezier(0.22, 1, 0.36, 1) var(--pop-delay, 0ms) backwards;
+}
+@keyframes slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .fade-up {
   animation: fadeUp var(--duration-slow) var(--ease-out) both;
 }

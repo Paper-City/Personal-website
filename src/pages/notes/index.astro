@@ -29,7 +29,7 @@ const notes = [
 	<section class="notes-section">
 		<ul class="notes">
 			{notes.map((n, i) => (
-				<li class="note">
+				<li class="note stagger-slide-left" style={`--pop-delay: ${50 + i * 200}ms`}>
 					<a href={n.href} class="note__link">
 						<div class="note__num">.{String(i + 1).padStart(2, '0')}</div>
 						<div class="note__meta">
