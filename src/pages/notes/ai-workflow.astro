@@ -1,0 +1,125 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="纸城 — 执行不再稀缺之后" current="笔记">
+	<article class="article">
+		<header class="article__head">
+			<a href="/notes" class="article__back">← 笔记</a>
+			<div class="eyebrow article__eyebrow">PRACTICE · 2026.06 · ~10 min</div>
+			<h1 class="article__title">执行不再稀缺之后——我的 AI 开发体系与行业判断</h1>
+		</header>
+
+		<div class="article__body">
+			<h2>引子</h2>
+			<p>这学期有一门课的作业，原本计划三四人组队完成。我一个人做完了：从玩法设计、素材生成到可玩原型，两天，中间迭代了好几轮。这款叫 Boatwright 的双人协同游戏，后来在展览上成了最受欢迎的作品。</p>
+			<p>这两天里我把最多的时间花在哪？花在"这个玩法到底好不好玩、怎么调更好"上。写代码、出素材这些过去最耗时的环节，被 AI 压缩到了次要位置。</p>
+			<p>这件事浓缩了我对 AI 的全部体会：<mark>AI 降低的是执行成本，创意和判断因此成了最稀缺的东西</mark>。</p>
+			<p>下面分两部分：先讲我具体怎么用 AI——一套持续使用、还在扩展的协同体系；再讲从这套实践里得出的行业判断。</p>
+
+			<h2>一、应用层：AI 具体做什么</h2>
+			<p>我把这套体系分三层：应用层、约束层、发展复用层。应用层主要在两块：做内容，和管项目。</p>
+			<p>做内容方面，代码、美术、音效各有专门的 Agent 分工：代码用 Claude Code 配 Godot 的 MCP 直接在引擎里开发；美术和帧动画用 PixelLab 一类工具；音效音乐用 Suno、ElevenLabs。每种工具最适合做什么，我都做过横向比较。</p>
+			<p>但工具清单本身不重要，重要的是它对设计的意义。我的 RTS 项目 Ash of Aetharn 里有一个对玩家行为做出反应的动态 AI 系统。过去调一版敌人行为逻辑要大半天，现在一天能试五六个版本，可以很快验证哪种打起来最有"对手感"。<mark>要什么、砍什么，判断仍然由我做；AI 做的是把验证一个想法的成本压到接近于零</mark>。</p>
+			<p>管项目方面，我用 Claude Code 接入 GitHub，自动维护分支和 commit；接入飞书，自动生成项目简报、更新里程碑、追踪进度；还搭了一个个人任务管理应用，把多个项目的任务统一起来。</p>
+
+			<h2>二、约束层：怎么让 AI 稳定工作</h2>
+			<p>用 AI 做零散的事不需要约束；把 AI 当成长期协作者，就需要。我的约束分三层。</p>
+			<p>最外层是全局工作规范，写在根目录的 CLAUDE.md 里；其中最关键的几条直接通过 hook 写进配置，保证每次必然触发。</p>
+			<p>中间层是对话身份。每个对话分配固定身份——程序、美术、助理——职责、权限、交付物都写明，不允许越界。这样可以避免在同一个上下文里混合多种任务背景、互相干扰、拉低输出质量。</p>
+			<p>最里层是指令集。高频操作固化成指令，例如 handoff 用于发现职责越界时，把工作交接给正确身份的对话。</p>
+
+			<h2>三、发展复用层：让体系自己生长</h2>
+			<p>开发中遇到值得记的问题，我会让 Agent 把问题与解法记录成一条经验；同类问题再次出现，它会主动建议把这条经验升级为工作规范；规范被反复使用，再沉淀进飞书笔记，成为方法论。经验是一级一级往上长的。</p>
+			<p>这套框架不只服务于游戏开发。我这次秋招的全部材料准备，用的也是同一套架构，一边用一边继续扩展。</p>
+
+			<h2>四、行业判断：瓶颈的迁移</h2>
+			<p>过去做游戏，执行是稀缺的。一个想法能不能变成好游戏，很大程度上取决于有没有足够的人力把它做出来——这也是大公司过去最深的优势。</p>
+			<p>现在执行成本被 AI 大幅拉低，瓶颈迁移到了另一端：知不知道该做什么，判不判断得出什么是好的。</p>
+
+			<h2>五、地板与天花板</h2>
+			<p>执行门槛降低，最直接的结果是入场的人变多。会有更多个人和中小团队做出像样的作品——地板被拉低了。</p>
+			<p>但天花板没有变。需要长期运营、持续产出海量内容的大型项目，仍然只有成规模的团队做得了。并且团队规模上去之后，最难的问题才真正出现：怎么让一套系统在几十上百人协作之下，体验保持一致、不走样。这恰好是系统设计的核心价值所在。</p>
+			<p>所以我的判断是：AI 时代大公司的竞争力不降反升，只是发力点从"堆人力做执行"转向"用更强的设计和判断，驾驭更大的盘子"。</p>
+
+			<h2>六、一个可检验的预测</h2>
+			<p>如果上面的判断成立，接下来几年应该能观察到两件事：个人与小团队作品的数量和平均质量同时上升；大厂内部纯执行类岗位收缩，设计与判断类岗位的占比上升。如果观察到的是相反的情况——比如 AI 并没有让小团队作品变多，或者大厂反而在扩张执行岗——那这个判断就该修正。</p>
+			<p><mark>对做系统设计的人来说，这是个好时候：执行不再稀缺之后，剩下的都是设计要回答的问题</mark>。</p>
+		</div>
+
+		<footer class="article__foot">
+			<a href="/notes" class="article__back">← 返回笔记</a>
+		</footer>
+	</article>
+</Base>
+
+<style>
+	.article {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: var(--s-7) 0 var(--s-10);
+	}
+
+	.article__head { margin-bottom: var(--s-6); }
+	.article__back {
+		display: inline-block;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		color: var(--ink-muted);
+		text-transform: uppercase;
+		margin-bottom: var(--s-7);
+		transition: color var(--duration) var(--ease);
+	}
+	.article__back:hover { color: var(--accent-bright); }
+
+	.article__eyebrow { margin-bottom: var(--s-5); }
+	.article__title {
+		font-family: var(--font-display);
+		font-size: clamp(28px, 3.6vw, 42px);
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.015em;
+		color: var(--ink);
+		margin-bottom: var(--s-5);
+		text-wrap: pretty;
+	}
+
+	.article__body { line-height: 1.85; }
+	.article__body h2 {
+		font-family: var(--font-display);
+		font-size: clamp(22px, 2.4vw, 28px);
+		font-weight: 700;
+		color: var(--ink);
+		margin-top: var(--s-9);
+		margin-bottom: var(--s-5);
+		padding-bottom: var(--s-3);
+		border-bottom: 1px solid var(--line);
+		letter-spacing: 0.01em;
+	}
+	.article__body h2:first-child { margin-top: 0; }
+	.article__body p {
+		font-family: var(--font-display);
+		font-size: 17px;
+		line-height: 1.85;
+		color: var(--ink-secondary);
+		margin-bottom: var(--s-4);
+	}
+	.article__body p mark {
+		background: transparent;
+		color: var(--accent-bright);
+		font-weight: 600;
+	}
+	.article__body strong { color: var(--ink); font-weight: 700; }
+
+	.article__foot {
+		margin-top: var(--s-10);
+		padding-top: var(--s-6);
+		border-top: 1px solid var(--line);
+	}
+
+	@media (max-width: 700px) {
+		.article { padding: var(--s-5) 0; }
+		.article__body p { font-size: 16px; line-height: 1.8; }
+	}
+</style>
