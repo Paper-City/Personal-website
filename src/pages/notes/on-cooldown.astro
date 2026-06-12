@@ -1,0 +1,195 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="纸城 — 论冷却机制" current="笔记">
+	<article class="article">
+		<header class="article__head">
+			<a href="/notes" class="article__back">← 笔记</a>
+			<div class="eyebrow article__eyebrow">DESIGN · 2026.06 · ~9 min</div>
+			<h1 class="article__title">论冷却机制——时间、行为与代价</h1>
+		</header>
+
+		<div class="article__body">
+			<h2>引子</h2>
+			<p>冷却机制是游戏中最常见的机制之一，最常见的表现是：角色技能或能力使用后，需要等待一段时间才能再次使用。通过该机制可以控制玩家使用技能的频率，进而关联游戏的平衡性和策略性，深度地影响游戏的核心玩法体验。</p>
+			<p>但我希望指出的是，冷却机制并不一定依托于时间。<mark>冷却机制的本质是让技能或能力的使用拥有代价</mark>，从而达到平衡技能强度、创造技能真空期、让玩家选择技能释放这一行为更具策略性等设计目的。</p>
+			<p>下面我分别以王者荣耀、杀戮尖塔、Hades 2 为例——它们分别采取了不同的冷却机制，以适应各自游戏的底层设计。</p>
+
+			<h2>一、王者荣耀：基于时间的冷却</h2>
+			<p>王者荣耀是依托于时间的游戏，每局游戏的进度并不由玩家行为决定，而是由时间自然推进。游戏要求玩家在各个时间点上做出正确的决策，考验的主要是玩家的时间规划能力与反应力。因此，王者荣耀的技能冷却机制采取了这类游戏中最常见的依托于时间的冷却机制，即技能释放后需要等待一段时间后再次释放。</p>
+			<p>这种设计会带来两种体验：</p>
+			<p><strong>技能释放时机的博弈</strong>——在对线期，玩家必须掌握好技能释放的时机。如果随意释放技能，很可能在技能真空期被卡线 / 打状态 / 被抓。例如，在绝大多数对局中，孙尚香都是克制射手马可波罗的，这是因为马可波罗对线期的核心输出手段是向指定方向发射弹幕，而孙尚香的一技能翻滚可以轻易躲开弹幕，获得加速效果，并对期间无法转向的马可波罗造成大量伤害。然而，如果孙尚香总是先于马可交出一技能，并且在交出一技能后仍然不与马可波罗拉开身位或存枪消耗，那么有经验的马可会果断前压使用一技能消耗失去位移的孙尚香，形成反压制。</p>
+			<p><strong>保留关键技能的博弈</strong>——在游戏的关键节点之前，玩家必须留好对团战会产生重大影响的关键技能。通常，这些节点前的双方博弈都会围绕如何逼出敌方关键技能展开。如司空震的大招，在 4 分钟 / 10 分钟的龙团之前，如果司空震的大招能够转好，那么对局势的影响无疑是巨大的。同样，在这个节点敌方也会极尽可能地对我方施加压力，逼出司空震的大招。</p>
+
+			<h2>二、杀戮尖塔：基于行为的冷却</h2>
+			<p>杀戮尖塔是依托于玩家行为的游戏，游戏的进度只有在玩家做出行动后才会推进（如打牌 / 进入房间）。游戏不希望带给玩家时间上的压力，而是更希望考查玩家的决策能力。因此，杀戮尖塔使用了依托于行为的冷却系统。</p>
+			<p>在杀戮尖塔中，我们可以看到大量需要玩家做出一定次数的行为后才能再次触发的效果：</p>
+			<div class="article__figs">
+				<figure class="article__fig">
+					<img src="/sts-letter-opener.webp" alt="杀戮尖塔遗物：开信刀" loading="lazy" />
+					<figcaption>开信刀——打出 3 张技能牌后对所有敌人造成伤害</figcaption>
+				</figure>
+				<figure class="article__fig">
+					<img src="/sts-tuning-fork.webp" alt="杀戮尖塔遗物：音叉" loading="lazy" />
+					<figcaption>音叉——打出 10 张技能牌后获得 7 点格挡</figcaption>
+				</figure>
+			</div>
+			<p>这种基于行为的冷却系统设计会带来两种游戏体验：</p>
+			<p><strong>满足触发条件带来的策略性</strong>——玩家需要尽可能地设法做出触发遗物效果的行为来触发效果，这会影响玩家的局内行为，从而带来策略性。以开信刀为例，在拥有开信刀且面对多个敌人时，玩家可能会尝试多打防御牌，靠开信刀输出，而非使用常规输出牌。</p>
+			<p><strong>计算触发时机带来的策略性</strong>——根据时机情况，玩家会设法调整自己的行为，在合适的时机触发遗物效果，从而带来策略性。例如，在本回合防御已经充足时，如果预计到下一回合会受到伤害，玩家仍然会尽可能地打出技能牌从而在下回合触发音叉。</p>
+			<p>小结：基于时间的冷却系统适合依托自然时间推进的游戏；基于行为的冷却系统适合依托玩家行为推进的游戏。</p>
+			<p>我们发现，虽然二者的形式看起来完全不同，但仍然存在相同点。对于强力的效果 / 技能，其冷却代价通常较高，如王者荣耀中司空震的大招、杀戮尖塔中的遗物音叉等，玩家对于这类技能的应对策略通常是进行更加全局性的思考，从战略层面考虑释放时机；对于通常的效果 / 技能，其冷却代价通常较低，如王者荣耀中孙尚香的一技能、杀戮尖塔的开信刀等，玩家对于这类技能的应对策略通常是更加考虑如何最大化收益地释放，而非从战略层面考虑。这种共同点正是因为冷却这一机制的基本属性——<mark>为效果带来代价</mark>。</p>
+
+			<h2>三、Hades 2：基于时间与行为的冷却</h2>
+			<p>如果希望在依托于时间的游戏中，设计出影响玩家某些行为的冷却系统，设计师可以采取时间 + 行为双重限制的冷却机制。</p>
+			<p>在 Hades 2 中，终极技能需要玩家在当前房间内消耗一定数量的能量才能解锁释放，而玩家需要通过蓄力、释放 Ω 技能才能消耗能量。这种设计虽然没有直接基于时间，但是它借助了能量这一中介与时间关联了起来：玩家想要释放终极技能必须消耗能量，而消耗能量必须使用蓄力技能，从而消耗时间。</p>
+			<p>因此，在 Hades 2 中，玩家必须将释放 Ω 技能与释放终极技能穿插起来。与常规的时间冷却不同，这套系统要求玩家不能消极地拖延时间等待终极技能转好，而是必须更加主动地进攻、释放 Ω 技能。</p>
+			<p>但同时，这也带来了其它设计问题。接下来，我将说明问题所在，以及如何修改这一设计。</p>
+
+			<h2>四、重新设计 Hades 2 的终极技能冷却</h2>
+			<p>Hades 2 将释放终极技能这一行为与释放 Ω 技能绑定起来，这一设计意图是有待商榷的。终极技能的定位应当是危机局面的一次应对手段，这与玩家选择的构筑流派本应没有关系——无论玩家是否选择使用 Ω 技能流派，都应该有释放终极技能的权利。</p>
+			<p>然而，在高热度中，由于敌人的进攻压力和部分祝福的词条限制，玩家几乎没有机会、也没有充足的能量释放 Ω 技能，这导致本应该起到应对作用的终极技能在面对高压环境时率先失效了。</p>
+			<p>同时，为了避免玩家故意留下少量敌人，反复空放 Ω 技能解锁终极技能后带入下一个房间使用，游戏中限制了玩家的终极技能解锁进度会在进入新的房间后重置。这无疑加剧了矛盾。</p>
+			<p>这种现象源于释放终极技能绑定了错误的行为——释放 Ω 技能。虽然设计师的本意是鼓励玩家尝试二代中独特的机制，<mark>但鼓励不应当成为强制</mark>。因此，首先应当将二者解绑。接下来，如何避免玩家在保留少量敌人的情况下等待终极技能冷却转好？很简单，我们只需将释放终极技能与击败敌人这一行为绑定起来就好——只有击败敌人，才会推进终极技能的解锁进度，这样从机制层面上自然而然地避免了消极策略。重新设计的冷却系统如下：</p>
+			<ol class="article__list">
+				<li>玩家需要消耗灵魂释放终极技能。</li>
+				<li>玩家击败敌人后会获取少量灵魂。</li>
+				<li>使用 Ω 技能击败敌人会造成"灵魂终结"，强化击败特效并获取额外灵魂。</li>
+				<li>在高热度环境下玩家获取的灵魂数量会变少。</li>
+			</ol>
+			<p>这一设计在保留了所有设计意图的前提下，避免了原本系统内的设计缺陷。</p>
+		</div>
+
+		<footer class="article__foot">
+			<a href="/notes" class="article__back">← 返回笔记</a>
+		</footer>
+	</article>
+</Base>
+
+<style>
+	.article {
+		max-width: 720px;
+		margin: 0 auto;
+		padding: var(--s-7) 0 var(--s-10);
+	}
+
+	.article__head { margin-bottom: var(--s-6); }
+	.article__back {
+		display: inline-block;
+		font-family: var(--font-mono);
+		font-size: 12px;
+		letter-spacing: 0.18em;
+		color: var(--ink-muted);
+		text-transform: uppercase;
+		margin-bottom: var(--s-7);
+		transition: color var(--duration) var(--ease);
+	}
+	.article__back:hover { color: var(--accent-bright); }
+
+	.article__eyebrow { margin-bottom: var(--s-5); }
+	.article__title {
+		font-family: var(--font-display);
+		font-size: clamp(28px, 3.6vw, 42px);
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.015em;
+		color: var(--ink);
+		margin-bottom: var(--s-5);
+		text-wrap: pretty;
+	}
+
+	.article__body { line-height: 1.85; }
+	.article__body h2 {
+		font-family: var(--font-display);
+		font-size: clamp(22px, 2.4vw, 28px);
+		font-weight: 700;
+		color: var(--ink);
+		margin-top: var(--s-9);
+		margin-bottom: var(--s-5);
+		padding-bottom: var(--s-3);
+		border-bottom: 1px solid var(--line);
+		letter-spacing: 0.01em;
+	}
+	.article__body h2:first-child { margin-top: 0; }
+	.article__body p {
+		font-family: var(--font-display);
+		font-size: 17px;
+		line-height: 1.85;
+		color: var(--ink-secondary);
+		margin-bottom: var(--s-4);
+	}
+	.article__body p mark {
+		background: transparent;
+		color: var(--accent-bright);
+		font-weight: 600;
+	}
+	.article__body strong { color: var(--ink); font-weight: 700; }
+
+	/* Side-by-side figures */
+	.article__figs {
+		display: flex;
+		gap: var(--s-4);
+		margin: var(--s-5) 0 var(--s-6);
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.article__fig {
+		flex: 0 1 240px;
+		margin: 0;
+	}
+	.article__fig img {
+		width: 100%;
+		height: auto;
+		display: block;
+		border: 1px solid var(--line);
+	}
+	.article__fig figcaption {
+		margin-top: var(--s-2);
+		font-family: var(--font-mono);
+		font-size: 11px;
+		line-height: 1.6;
+		letter-spacing: 0.04em;
+		color: var(--ink-muted);
+		text-align: center;
+	}
+
+	.article__list {
+		margin: var(--s-5) 0;
+		padding-left: 0;
+		list-style: none;
+		counter-reset: item;
+	}
+	.article__list li {
+		counter-increment: item;
+		position: relative;
+		padding: var(--s-3) 0 var(--s-3) var(--s-7);
+		font-size: 17px;
+		line-height: 1.7;
+		color: var(--ink-secondary);
+		border-bottom: 1px dashed var(--line);
+	}
+	.article__list li:last-child { border-bottom: none; }
+	.article__list li::before {
+		content: counter(item, decimal-leading-zero);
+		position: absolute;
+		left: 0;
+		top: var(--s-3);
+		font-family: var(--font-mono);
+		font-size: 13px;
+		font-weight: 500;
+		color: var(--accent-bright);
+		letter-spacing: 0.1em;
+	}
+
+	.article__foot {
+		margin-top: var(--s-10);
+		padding-top: var(--s-6);
+		border-top: 1px solid var(--line);
+	}
+
+	@media (max-width: 700px) {
+		.article { padding: var(--s-5) 0; }
+		.article__body p { font-size: 16px; line-height: 1.8; }
+	}
+</style>
